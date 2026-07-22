@@ -60,23 +60,14 @@ ul { list-style: none; }
 .logo-text { font-size: 22px; font-weight: 800; color: var(--teal); line-height: 1.1; letter-spacing: 1px; }
 .logo-text span { color: var(--gold); }
 .logo-sub { font-size: 9px; color: var(--gray-400); font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
-
-.header-right { display: flex; align-items: center; gap: 16px; }
+.header-right { display: flex; align-items: center; gap: 20px; }
 .header-email { display: flex; align-items: center; gap: 6px; color: var(--teal); font-size: 13px; font-weight: 500; }
 .header-email svg { width: 14px; height: 14px; fill: var(--gold); }
-
+.header-wa { display: flex; align-items: center; gap: 6px; color: #25D366; font-size: 13px; font-weight: 600; }
+.header-wa svg { width: 16px; height: 16px; fill: #25D366; }
 .header-cart { position: relative; display: flex; align-items: center; gap: 4px; cursor: pointer; }
 .header-cart svg { width: 20px; height: 20px; fill: var(--teal); }
 .header-cart-count { position: absolute; top: -4px; right: -4px; background: var(--gold); color: var(--teal-dark); font-size: 10px; font-weight: 700; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-
-/* Nav */
-.main-nav { background: var(--teal); }
-.main-nav-list { display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-.main-nav-list::-webkit-scrollbar { display: none; }
-.main-nav-item { position: relative; }
-.main-nav-link { display: block; padding: 12px 18px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85); white-space: nowrap; transition: color 0.2s; }
-.main-nav-link:hover, .main-nav-link.active { color: var(--gold); }
-.main-nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 18px; right: 18px; height: 2px; background: var(--gold); }
 
 /* Hero */
 .hero { position: relative; overflow: hidden; background: var(--teal); min-height: 380px; display: flex; align-items: center; }
@@ -86,8 +77,6 @@ ul { list-style: none; }
 .hero-subtitle { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 24px; max-width: 460px; }
 .hero-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--teal-dark); padding: 13px 30px; border-radius: 50px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; font-family: var(--font); }
 .hero-btn:hover { background: #c49640; transform: translateY(-1px); }
-.hero-btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.3); color: white; }
-.hero-btn-outline:hover { border-color: white; background: rgba(255,255,255,0.05); }
 
 /* Features */
 .features { padding: 48px 0; background: var(--cream); }
@@ -99,6 +88,7 @@ ul { list-style: none; }
 
 /* Section */
 .section { padding: 56px 0; }
+.section-alt { background: var(--white); }
 .section-header { text-align: center; margin-bottom: 36px; }
 .section-tag { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 6px; }
 .section-title { font-size: clamp(22px, 2.8vw, 30px); font-weight: 700; color: var(--teal); margin-bottom: 10px; }
@@ -106,10 +96,13 @@ ul { list-style: none; }
 
 /* Category Grid */
 .categories-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.category-card { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 1; cursor: pointer; }
-.category-card-inner { padding: 24px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; color: white; }
+.category-card { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 1; cursor: pointer; min-height: 240px; }
+.category-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.category-card:hover img { transform: scale(1.06); }
+.category-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); }
+.category-card-inner { position: relative; z-index: 1; padding: 24px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; color: white; }
 .category-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-.category-card p { font-size: 13px; opacity: 0.8; }
+.category-card p { font-size: 13px; opacity: 0.85; }
 
 /* Banner */
 .banner-section { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%); padding: 56px 0; text-align: center; }
@@ -137,6 +130,29 @@ ul { list-style: none; }
 .product-name:hover { color: var(--teal); }
 .product-price { font-size: 16px; font-weight: 700; color: var(--teal); }
 .product-price sup { font-size: 10px; font-weight: 400; color: var(--gray-400); margin-left: 2px; }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.about-text p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 16px; }
+.about-text strong { color: var(--teal); }
+.about-image { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/3; }
+.about-image img { width: 100%; height: 100%; object-fit: cover; }
+.about-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.about-value { text-align: center; padding: 20px; background: var(--cream); border-radius: var(--radius); }
+.about-value svg { width: 28px; height: 28px; fill: var(--gold); margin-bottom: 10px; }
+.about-value h4 { font-size: 14px; font-weight: 600; color: var(--teal); margin-bottom: 4px; }
+.about-value p { font-size: 12px; color: var(--text-light); margin: 0; }
+
+/* FAQ */
+.faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+.faq-item { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; }
+.faq-question { width: 100%; padding: 18px 20px; text-align: left; font-size: 15px; font-weight: 600; color: var(--text); background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: var(--font); transition: color 0.2s; }
+.faq-question:hover { color: var(--teal); }
+.faq-question svg { width: 16px; height: 16px; fill: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
+.faq-item.open .faq-question svg { transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 20px; }
+.faq-item.open .faq-answer { max-height: 300px; padding: 0 20px 18px; }
+.faq-answer p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
 
 /* Brands */
 .brands-section { background: var(--white); padding: 40px 0; border-top: 1px solid var(--gray-200); }
@@ -184,18 +200,18 @@ ul { list-style: none; }
 .ig-float:hover { transform: scale(1.05); }
 .ig-float svg { width: 20px; height: 20px; fill: white; }
 
-/* Responsive */
 @media (max-width: 1024px) {
-  .categories-grid { grid-template-columns: repeat(2, 1fr); }
-  .products-grid { grid-template-columns: repeat(3, 1fr); }
+  .categories-grid, .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 24px; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
   .top-bar-links { display: none; }
-  .header-email { display: none; }
+  .header-email, .header-wa { display: none; }
   .features-grid { grid-template-columns: 1fr; gap: 20px; }
-  .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .about-values { grid-template-columns: 1fr; }
+  .categories-grid { gap: 10px; }
+  .products-grid { gap: 10px; }
   .products-header { flex-direction: column; align-items: flex-start; }
   .hero { min-height: 300px; }
   .hero-content { padding: 36px 0; }
@@ -205,6 +221,7 @@ ul { list-style: none; }
 }
 @media (max-width: 480px) {
   .products-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .categories-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-title { font-size: 22px; }
   .logo svg { width: 40px; height: 40px; }
   .logo-text { font-size: 18px; }
@@ -213,32 +230,27 @@ ul { list-style: none; }
 </head>
 <body>
 
-<!-- Logo SVG Defs (hidden) -->
+<!-- Logo SVG Defs -->
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
-  <defs id="logoDefs">
+  <defs>
     <linearGradient id="igGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#f09433"/>
       <stop offset="50%" stop-color="#dc2743"/>
       <stop offset="100%" stop-color="#bc1888"/>
     </linearGradient>
   </defs>
-  <!-- Box & Co Logo -->
   <g id="boxco-logo">
     <circle cx="50" cy="50" r="50" fill="#1A4747"/>
-    <!-- Gift box icon -->
     <g transform="translate(26,18)" fill="none" stroke="#D0D0D0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <rect x="2" y="8" width="44" height="32" rx="2"/>
       <line x1="2" y1="18" x2="46" y2="18"/>
       <line x1="16" y1="8" x2="16" y2="40"/>
       <line x1="32" y1="8" x2="32" y2="40"/>
-      <path d="M24 5 Q24 1 18 1 Q10 1 10 8" fill="none"/>
-      <path d="M24 5 Q24 1 30 1 Q38 1 38 8" fill="none"/>
+      <path d="M24 5 Q24 1 18 1 Q10 1 10 8"/>
+      <path d="M24 5 Q24 1 30 1 Q38 1 38 8"/>
     </g>
-    <!-- Heart on top -->
     <path d="M44 15 Q44 13 46 13 Q48 13 48 15 Q48 17 46 19 L44 21 L42 19 Q40 17 40 15 Q40 13 42 13 Q44 13 44 15Z" fill="#D0D0D0" transform="translate(6,1) scale(0.6)"/>
-    <!-- BOX & CO text -->
     <text x="50" y="68" text-anchor="middle" font-family="'Inter',sans-serif" font-size="11" font-weight="800" fill="none" stroke="#D0D0D0" stroke-width="1.2" letter-spacing="1.5">BOX & CO</text>
-    <!-- Tagline arc -->
     <path id="arcPath" d="M 15 82 A 38 38 0 0 0 85 82" fill="none"/>
     <text font-family="'Inter',sans-serif" font-size="5.5" fill="#D0D0D0" font-weight="600" letter-spacing="1.2">
       <textPath href="#arcPath" startOffset="50%" text-anchor="middle">DETALLES QUE CREAN VÍNCULOS</textPath>
@@ -250,10 +262,10 @@ ul { list-style: none; }
 <div class="top-bar">
   <div class="container">
     <div class="top-bar-links">
-      <a href="#">¿Quiénes somos?</a>
-      <a href="#">Productos</a>
-      <a href="#">Preguntas frecuentes</a>
-      <a href="#">Contacto</a>
+      <a href="#productos">Productos</a>
+      <a href="#nosotras">Quiénes somos</a>
+      <a href="#faq">Preguntas frecuentes</a>
+      <a href="mailto:boxycoregalos@gmail.com">Contacto</a>
     </div>
     <div class="top-bar-contact">
       <span>✨ Detalles que crean vínculos</span>
@@ -272,47 +284,28 @@ ul { list-style: none; }
           <div class="logo-sub">REGALOS EMPRESARIALES</div>
         </div>
       </a>
-
       <div class="header-right">
         <a href="mailto:boxycoregalos@gmail.com" class="header-email">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           boxycoregalos@gmail.com
         </a>
-        <div class="header-cart">
-          <svg viewBox="0 0 24 24"><path d="M9 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-9-4 1.35-2.7h7.2L19 7H7l-.73-2H3v2h2l3.45 9.5A1.5 1.5 0 0 0 10 18h9v-2H9.82a.5.5 0 0 1-.47-.68L10 14z"/></svg>
-          <span class="header-cart-count">0</span>
-        </div>
+        <a href="https://wa.me/5493537665026" target="_blank" class="header-wa">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          +549 3537 665026
+        </a>
       </div>
     </div>
   </div>
 </header>
 
-<!-- Main Nav -->
-<nav class="main-nav">
-  <div class="container">
-    <ul class="main-nav-list">
-      <li class="main-nav-item"><a href="#" class="main-nav-link active">Inicio</a></li>
-      <li class="main-nav-item"><a href="#" class="main-nav-link">Drinkware</a></li>
-      <li class="main-nav-item"><a href="#" class="main-nav-link">Mochilas y Bolsos</a></li>
-      <li class="main-nav-item"><a href="#" class="main-nav-link">Indumentaria</a></li>
-      <li class="main-nav-item"><a href="#" class="main-nav-link">Gorros</a></li>
-      <li class="main-nav-item"><a href="#" class="main-nav-link">Mates</a></li>
-      <li class="main-nav-item"><a href="#" class="main-nav-link">Oficina</a></li>
-      <li class="main-nav-item"><a href="#" class="main-nav-link">Sustentables</a></li>
-      <li class="main-nav-item"><a href="#" class="main-nav-link">Tiempo Libre</a></li>
-      <li class="main-nav-item"><a href="#" class="main-nav-link">Ocasiones Especiales</a></li>
-    </ul>
-  </div>
-</nav>
-
 <!-- Hero -->
-<section class="hero">
+<section class="hero" id="inicio">
   <div class="container">
     <div class="hero-content">
       <div class="hero-tagline">Detalles que crean vínculos</div>
       <h1 class="hero-title">Regalos corporativos<br>que dejan huella</h1>
       <p class="hero-subtitle">En Box & Co creamos experiencias únicas para tu marca. Productos personalizados de calidad que fortalecen la relación con tus clientes y colaboradores.</p>
-      <a href="#" class="hero-btn">Ver Productos →</a>
+      <a href="#productos" class="hero-btn">Ver Productos →</a>
     </div>
   </div>
 </section>
@@ -347,7 +340,7 @@ ul { list-style: none; }
 </section>
 
 <!-- Categories -->
-<section class="section">
+<section class="section" id="categorias">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Categorías</div>
@@ -355,28 +348,78 @@ ul { list-style: none; }
       <p class="section-subtitle">Más de 500 productos personalizables para tu empresa</p>
     </div>
     <div class="categories-grid">
-      <div class="category-card" style="background: linear-gradient(135deg, #1A4747, #0F3232);">
+      <div class="category-card">
+        <img src="https://images-cdn.zecat.com/generic_products/7fz5ilg1nl-1752006361.webp" alt="Drinkware" loading="lazy">
+        <div class="category-overlay"></div>
         <div class="category-card-inner">
           <h3>Drinkware</h3>
           <p>Botellas, jarros, termos</p>
         </div>
       </div>
-      <div class="category-card" style="background: linear-gradient(135deg, #D4A853, #b8913e);">
+      <div class="category-card">
+        <img src="https://images-cdn.zecat.com/generic_products/Portada-Bag-Tero-43x35%2Cjpg19-1714050283.jpg" alt="Mochilas y Bolsos" loading="lazy">
+        <div class="category-overlay"></div>
         <div class="category-card-inner">
           <h3>Mochilas y Bolsos</h3>
           <p>Totes, mochilas, neceseres</p>
         </div>
       </div>
-      <div class="category-card" style="background: linear-gradient(135deg, #2A6B6B, #1A4747);">
+      <div class="category-card">
+        <img src="https://images-cdn.zecat.com/generic_products/t6jl06fxlei-1773708431.webp" alt="Indumentaria" loading="lazy">
+        <div class="category-overlay"></div>
         <div class="category-card-inner">
           <h3>Indumentaria</h3>
           <p>Remeras, chombas, camperas</p>
         </div>
       </div>
-      <div class="category-card" style="background: linear-gradient(135deg, #8B7355, #6b5a42);">
+      <div class="category-card">
+        <img src="https://images-cdn.zecat.com/generic_products/4o1t317fmc3-1773770398.webp" alt="Oficina" loading="lazy">
+        <div class="category-overlay"></div>
         <div class="category-card-inner">
           <h3>Oficina</h3>
           <p>Bolígrafos, agendas, sets</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section section-alt" id="nosotras">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Quiénes somos</div>
+      <h2 class="section-title">Somos Box & Co</h2>
+      <p class="section-subtitle">Un equipo de emprendedoras apasionadas por crear vínculos a través de los detalles.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Somos un equipo de <strong>emprendedoras cordobesas</strong> que cree en el poder de los detalles. En Box & Co nos dedicamos a los regalos empresariales y al merchandising corporativo, ayudando a las marcas a conectar con sus clientes y colaboradores de una manera auténtica y memorable.</p>
+        <p>Trabajamos con <strong>más de 500 productos personalizables</strong> de las mejores marcas, desde drinkware y mochilas hasta indumentaria y artículos de oficina. Cada producto puede llevar el logo de tu empresa con las técnicas de personalización más avanzadas.</p>
+        <p>Nuestra misión es que cada regalo corporativo cuente una historia y fortalezca esos vínculos que hacen crecer tu negocio. <strong>Porque los detalles son los que quedan</strong>.</p>
+        <div class="about-values">
+          <div class="about-value">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <h4>Confianza</h4>
+            <p>Trabajamos con marcas líderes y procesos transparentes</p>
+          </div>
+          <div class="about-value">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h4>Calidad</h4>
+            <p>Seleccionamos cada producto para garantizar el mejor resultado</p>
+          </div>
+          <div class="about-value">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <h4>Cercanía</h4>
+            <p>Te acompañamos en cada paso con atención personalizada</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-image" style="background: linear-gradient(135deg, var(--teal), var(--teal-light)); display:flex; align-items:center; justify-content:center; color:white; text-align:center; padding:40px;">
+        <div>
+          <svg viewBox="0 0 100 100" width="80" height="80" style="margin:0 auto 16px;"><use href="#boxco-logo"/></svg>
+          <p style="font-size:18px; font-weight:600; opacity:0.9;">BOX & CO</p>
+          <p style="font-size:13px; opacity:0.6;">Detalles que crean vínculos</p>
         </div>
       </div>
     </div>
@@ -387,13 +430,13 @@ ul { list-style: none; }
 <section class="banner-section">
   <div class="container">
     <h2 class="banner-title">Personalizamos cada detalle</h2>
-    <p class="banner-text">Elegí entre cientos de productos y agregales el logo de tu marca con las mejores técnicas de personalización.</p>
-    <a href="#" class="banner-btn">PEDIR COTIZACIÓN →</a>
+    <p class="banner-text">Elegí entre cientos de productos y agregales el logo de tu marca con las mejores técnicas de personalización disponibles.</p>
+    <a href="https://wa.me/5493537665026" target="_blank" class="banner-btn">PEDIR COTIZACIÓN →</a>
   </div>
 </section>
 
 <!-- Products -->
-<section class="section">
+<section class="section" id="productos">
   <div class="container">
     <div class="products-header">
       <div>
@@ -407,8 +450,62 @@ ul { list-style: none; }
         <button class="products-tab">Indumentaria</button>
       </div>
     </div>
-
     <div class="products-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <p class="section-subtitle">Todo lo que necesitás saber para empezar</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          ¿Cómo funciona la personalización con logo?
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><p>Elegís el producto, nos enviás el logo de tu empresa y seleccionamos la técnica de personalización ideal según el material y el diseño. Trabajamos con serigrafía, bordado, transfer, grabado láser, tampografía y más. La mayoría de los productos tienen servicio de logo en 24 horas.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          ¿Cuáles son los mínimos de compra?
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><p>Trabajamos con pedidos corporativos. Los mínimos varían según el producto, pero generalmente arrancamos desde 10 a 50 unidades. Si tenés un proyecto especial, consultanos y armamos una propuesta a medida.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          ¿Hacen envíos a todo el país?
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><p>Sí, hacemos envíos a toda la Argentina a través de correo OCA y motomensajería en Córdoba. Los tiempos de entrega dependen del destino y la disponibilidad de stock, pero generalmente estamos hablando de 3 a 10 días hábiles.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          ¿Cuánto tarda la producción con logo?
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><p>Ofrecemos servicio <strong>Logo 24hs</strong> en una gran variedad de productos (con unidades mínimas y máximas). Para pedidos especiales o técnicas más complejas, los tiempos de producción son de 5 a 10 días hábiles.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          ¿Cómo solicito un presupuesto?
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><p>Podés contactarnos por WhatsApp al <a href="https://wa.me/5493537665026" style="color:var(--teal);font-weight:600;">+549 3537 665026</a> o por mail a <a href="mailto:boxycoregalos@gmail.com" style="color:var(--teal);font-weight:600;">boxycoregalos@gmail.com</a>. Decinos qué producto te interesa, las cantidades y el tipo de personalización, y te armamos una propuesta en el día.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          ¿Qué marcas trabajan?
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><p>Trabajamos con las mejores marcas del mercado: Stanley, Slazenger, Pampero, Sol's, Cardon, Pampa Spirit, Re:use me, entre otras. Todos nuestros productos son originales y de primera calidad.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -451,9 +548,8 @@ ul { list-style: none; }
             <div class="logo-text" style="color:white;">BOX <span>&</span> CO</div>
           </div>
         </div>
-        <p>Somos una empresa dedicada a los regalos empresariales y merchandising corporativo. Te ayudamos a promocionar tu marca con productos de calidad que crean vínculos.</p>
+        <p>Somos un equipo de emprendedoras cordobesas dedicadas a los regalos empresariales y merchandising corporativo. Te ayudamos a promocionar tu marca con productos de calidad que crean vínculos.</p>
       </div>
-
       <div>
         <h4>Contacto</h4>
         <div class="footer-contact-item">
@@ -461,39 +557,37 @@ ul { list-style: none; }
           <div>boxycoregalos@gmail.com</div>
         </div>
         <div class="footer-contact-item">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div>Córdoba, Argentina</div>
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <div>+549 3537 665026</div>
         </div>
         <div class="footer-contact-item">
           <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
           <div>@boxyco.re</div>
         </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>Córdoba, Argentina</div>
+        </div>
       </div>
-
       <div>
         <h4>Categorías</h4>
         <div class="footer-links">
-          <a href="#">Drinkware</a>
-          <a href="#">Indumentaria</a>
-          <a href="#">Mochilas y Bolsos</a>
-          <a href="#">Gorros</a>
-          <a href="#">Mates</a>
-          <a href="#">Oficina</a>
-          <a href="#">Sustentables</a>
-          <a href="#">Tiempo Libre</a>
+          <a href="#categorias">Drinkware</a>
+          <a href="#categorias">Indumentaria</a>
+          <a href="#categorias">Mochilas y Bolsos</a>
+          <a href="#categorias">Oficina</a>
+          <a href="#categorias">Sustentables</a>
+        </div>
+        <h4 style="margin-top:18px;">Más Info</h4>
+        <div class="footer-links">
+          <a href="#nosotras">¿Quiénes somos?</a>
+          <a href="#productos">Productos</a>
+          <a href="#faq">Preguntas Frecuentes</a>
+          <a href="mailto:boxycoregalos@gmail.com">Contacto</a>
         </div>
       </div>
-
       <div>
-        <h4>Más Info</h4>
-        <div class="footer-links">
-          <a href="#">¿Quiénes somos?</a>
-          <a href="#">Productos</a>
-          <a href="#">Preguntas Frecuentes</a>
-          <a href="#">Contacto</a>
-          <a href="#">Términos y Condiciones</a>
-        </div>
-        <h4 style="margin-top: 18px;">Seguinos @boxyco.re</h4>
+        <h4>Seguinos @boxyco.re</h4>
         <div class="footer-ig-grid">
           <div></div><div></div><div></div>
           <div></div><div></div><div></div>
@@ -501,7 +595,6 @@ ul { list-style: none; }
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
       <div>BOX & CO © 2026. Todos los derechos reservados.</div>
       <div class="footer-social">
@@ -513,18 +606,15 @@ ul { list-style: none; }
   </div>
 </footer>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/5493516347754" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+<!-- Floats -->
+<a href="https://wa.me/5493537665026" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
 </a>
-
-<!-- Instagram Float -->
 <a href="https://www.instagram.com/boxyco.re/" target="_blank" class="ig-float" aria-label="Instagram">
   <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
 </a>
 
 <script>
-// Product data from Zecat
 const PRODUCTS = [
   {name:"Jarro Dam", cat:"Drinkware", price:"$2.206", img:"https://images-cdn.zecat.com/generic_products/btbv6vlzssl-1784041406.webp", brand:"Re:use me", tags:["ECO"]},
   {name:"Vaso Party", cat:"Drinkware", price:"$906", img:"https://images-cdn.zecat.com/generic_products/rprtpgytwld-1773682203.webp", brand:"Zecat", tags:[]},
@@ -561,7 +651,6 @@ const PRODUCTS = [
   {name:"Set Ancor", cat:"Oficina", price:"$2.686", img:"https://images-cdn.zecat.com/generic_products/t4d3wnhis1-1767125654.webp", brand:"Zecat", tags:["ECO","CORCHO"]},
   {name:"Bag TERO 43x35", cat:"Mochilas", price:"$18.794", img:"https://images-cdn.zecat.com/generic_products/Portada-Bag-Tero-43x35%2Cjpg19-1714050283.jpg", brand:"Zecat", tags:["ECO"]},
   {name:"Caja para Botellas", cat:"Drinkware", price:"$199", img:"https://images-cdn.zecat.com/generic_products/zo7kfxpx5cn-1768594227.webp", brand:"Zecat", tags:["SALE"]},
-  {name:"Porta Objetos SQUARE", cat:"Mochilas", price:"$1.593", img:"https://images-cdn.zecat.com/generic_products/PortadaPortaobjetosSquare-1747832734.webp", brand:"Zecat", tags:["VIAJES"]},
 ];
 
 function renderProducts(list) {
@@ -581,19 +670,16 @@ function renderProducts(list) {
     grid.appendChild(card);
   });
 }
-
 renderProducts(PRODUCTS);
-
-// Tab filtering
 document.querySelectorAll('.products-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.products-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    const filter = tab.textContent.trim();
-    if (filter === 'Todos') renderProducts(PRODUCTS);
-    else if (filter === 'Drinkware') renderProducts(PRODUCTS.filter(p => p.cat === 'Drinkware'));
-    else if (filter === 'Mochilas') renderProducts(PRODUCTS.filter(p => p.cat === 'Mochilas'));
-    else if (filter === 'Indumentaria') renderProducts(PRODUCTS.filter(p => p.cat === 'Indumentaria'));
+    const f = tab.textContent.trim();
+    if (f === 'Todos') renderProducts(PRODUCTS);
+    else if (f === 'Drinkware') renderProducts(PRODUCTS.filter(p => p.cat === 'Drinkware'));
+    else if (f === 'Mochilas') renderProducts(PRODUCTS.filter(p => p.cat === 'Mochilas'));
+    else if (f === 'Indumentaria') renderProducts(PRODUCTS.filter(p => p.cat === 'Indumentaria'));
     else renderProducts(PRODUCTS);
   });
 });
