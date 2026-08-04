@@ -8,16 +8,16 @@
 <meta property="og:title" content="BOX & CO — Regalos Empresariales">
 <meta property="og:description" content="Detalles que crean vínculos. Regalos corporativos y merchandising personalizado.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#1A4747">
+<meta name="theme-color" content="#6E1423">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --teal: #1A4747;
-  --teal-light: #2A6B6B;
-  --teal-dark: #0F3232;
+  --bordo: #6E1423;
+  --bordo-light: #8E2736;
+  --bordo-dark: #450B13;
   --gold: #D4A853;
   --gold-light: #F0E4C8;
   --cream: #F8F6F1;
@@ -45,7 +45,7 @@ ul { list-style: none; }
 .container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 
 /* Top Bar */
-.top-bar { background: var(--teal-dark); color: rgba(255,255,255,0.8); font-size: 13px; padding: 8px 0; }
+.top-bar { background: var(--bordo-dark); color: rgba(255,255,255,0.8); font-size: 13px; padding: 8px 0; }
 .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
 .top-bar a { transition: color 0.2s; }
 .top-bar a:hover { color: var(--gold); }
@@ -57,25 +57,25 @@ ul { list-style: none; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; gap: 16px; }
 .logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 .logo svg { width: 48px; height: 48px; }
-.logo-text { font-size: 22px; font-weight: 800; color: var(--teal); line-height: 1.1; letter-spacing: 1px; }
+.logo-text { font-size: 22px; font-weight: 800; color: var(--bordo); line-height: 1.1; letter-spacing: 1px; }
 .logo-text span { color: var(--gold); }
 .logo-sub { font-size: 9px; color: var(--gray-400); font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
 .header-right { display: flex; align-items: center; gap: 20px; }
-.header-email { display: flex; align-items: center; gap: 6px; color: var(--teal); font-size: 13px; font-weight: 500; }
+.header-email { display: flex; align-items: center; gap: 6px; color: var(--bordo); font-size: 13px; font-weight: 500; }
 .header-email svg { width: 14px; height: 14px; fill: var(--gold); }
 .header-wa { display: flex; align-items: center; gap: 6px; color: #25D366; font-size: 13px; font-weight: 600; }
 .header-wa svg { width: 16px; height: 16px; fill: #25D366; }
 .header-cart { position: relative; display: flex; align-items: center; gap: 4px; cursor: pointer; }
-.header-cart svg { width: 20px; height: 20px; fill: var(--teal); }
-.header-cart-count { position: absolute; top: -4px; right: -4px; background: var(--gold); color: var(--teal-dark); font-size: 10px; font-weight: 700; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.header-cart svg { width: 20px; height: 20px; fill: var(--bordo); }
+.header-cart-count { position: absolute; top: -4px; right: -4px; background: var(--gold); color: var(--bordo-dark); font-size: 10px; font-weight: 700; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
 /* Hero */
-.hero { position: relative; overflow: hidden; background: var(--teal); min-height: 380px; display: flex; align-items: center; }
+.hero { position: relative; overflow: hidden; background: var(--bordo); min-height: 380px; display: flex; align-items: center; }
 .hero-content { max-width: 560px; padding: 50px 0; }
 .hero-tagline { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--gold); margin-bottom: 12px; }
 .hero-title { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 14px; }
 .hero-subtitle { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 24px; max-width: 460px; }
-.hero-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--teal-dark); padding: 13px 30px; border-radius: 50px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; font-family: var(--font); }
+.hero-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--bordo-dark); padding: 13px 30px; border-radius: 50px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; font-family: var(--font); }
 .hero-btn:hover { background: #c49640; transform: translateY(-1px); }
 
 /* Features */
@@ -83,7 +83,7 @@ ul { list-style: none; }
 .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
 .feature-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--gold-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
 .feature-icon svg { width: 22px; height: 22px; fill: var(--gold); }
-.feature-title { font-size: 15px; font-weight: 600; color: var(--teal); margin-bottom: 6px; }
+.feature-title { font-size: 15px; font-weight: 600; color: var(--bordo); margin-bottom: 6px; }
 .feature-desc { font-size: 14px; color: var(--text-light); line-height: 1.5; }
 
 /* Section */
@@ -91,7 +91,7 @@ ul { list-style: none; }
 .section-alt { background: var(--white); }
 .section-header { text-align: center; margin-bottom: 36px; }
 .section-tag { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 6px; }
-.section-title { font-size: clamp(22px, 2.8vw, 30px); font-weight: 700; color: var(--teal); margin-bottom: 10px; }
+.section-title { font-size: clamp(22px, 2.8vw, 30px); font-weight: 700; color: var(--bordo); margin-bottom: 10px; }
 .section-subtitle { font-size: 15px; color: var(--text-light); max-width: 560px; margin: 0 auto; }
 
 /* Category Grid */
@@ -105,49 +105,95 @@ ul { list-style: none; }
 .category-card p { font-size: 13px; opacity: 0.85; }
 
 /* Banner */
-.banner-section { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%); padding: 56px 0; text-align: center; }
+.banner-section { background: linear-gradient(135deg, var(--bordo) 0%, var(--bordo-dark) 100%); padding: 56px 0; text-align: center; }
 .banner-title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: white; margin-bottom: 10px; }
 .banner-text { font-size: 15px; color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto 20px; }
-.banner-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--teal-dark); padding: 12px 32px; border-radius: 50px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s; border: none; cursor: pointer; font-family: var(--font); }
+.banner-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--bordo-dark); padding: 12px 32px; border-radius: 50px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s; border: none; cursor: pointer; font-family: var(--font); }
 .banner-btn:hover { background: #c49640; }
 
 /* Products Grid */
 .products-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
 .products-tabs { display: flex; gap: 4px; background: var(--gray-100); border-radius: 8px; padding: 3px; }
 .products-tab { padding: 7px 16px; border-radius: 6px; font-size: 12px; font-weight: 500; border: none; background: transparent; cursor: pointer; color: var(--text-light); transition: all 0.2s; font-family: var(--font); }
-.products-tab.active { background: white; color: var(--teal); box-shadow: var(--shadow-sm); }
+.products-tab.active { background: white; color: var(--bordo); box-shadow: var(--shadow-sm); }
 .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .product-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
 .product-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 .product-image { position: relative; aspect-ratio: 1; background: var(--cream); display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
 .product-card:hover .product-image img { transform: scale(1.05); }
-.product-badge { position: absolute; top: 8px; left: 8px; background: var(--teal); color: white; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; }
+.product-badge { position: absolute; top: 8px; left: 8px; background: var(--bordo); color: white; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; }
 .product-body { padding: 14px; }
 .product-cats { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 4px; }
 .product-cat { font-size: 10px; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.5px; }
 .product-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; color: var(--text); line-height: 1.3; }
-.product-name:hover { color: var(--teal); }
-.product-price { font-size: 16px; font-weight: 700; color: var(--teal); }
+.product-name:hover { color: var(--bordo); }
+.product-price { font-size: 16px; font-weight: 700; color: var(--bordo); }
 .product-price sup { font-size: 10px; font-weight: 400; color: var(--gray-400); margin-left: 2px; }
+
+/* Product Add / Qty Stepper */
+.product-add-wrap { margin-top: 10px; }
+.btn-add { width: 100%; padding: 9px 12px; background: var(--bordo); color: white; border: none; border-radius: 8px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; font-family: var(--font); transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-add:hover { background: var(--bordo-light); }
+.btn-add svg { width: 14px; height: 14px; fill: currentColor; }
+.qty-stepper { width: 100%; display: flex; align-items: center; justify-content: space-between; background: var(--cream); border: 1px solid var(--gray-200); border-radius: 8px; padding: 3px; }
+.qty-stepper button { width: 30px; height: 30px; border: none; background: white; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: 700; color: var(--bordo); display: flex; align-items: center; justify-content: center; transition: background 0.2s; font-family: var(--font); }
+.qty-stepper button:hover { background: var(--gold-light); }
+.qty-stepper .qty-val { font-size: 13px; font-weight: 700; color: var(--bordo); min-width: 28px; text-align: center; }
+
+/* Cart Drawer */
+.cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; z-index: 199; }
+.cart-overlay.open { opacity: 1; visibility: visible; }
+.cart-drawer { position: fixed; top: 0; right: 0; height: 100%; width: 400px; max-width: 92vw; background: var(--white); z-index: 200; transform: translateX(100%); transition: transform 0.3s ease; display: flex; flex-direction: column; box-shadow: -8px 0 30px rgba(0,0,0,0.15); }
+.cart-drawer.open { transform: translateX(0); }
+.cart-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid var(--gray-200); }
+.cart-header h3 { font-size: 17px; font-weight: 700; color: var(--bordo); display: flex; align-items: center; gap: 8px; }
+.cart-header h3 svg { width: 18px; height: 18px; fill: var(--gold); }
+.cart-close { width: 32px; height: 32px; border-radius: 50%; border: none; background: var(--gray-100); color: var(--text); font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; font-family: var(--font); }
+.cart-close:hover { background: var(--gray-200); }
+.cart-items { flex: 1; overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; }
+.cart-empty { text-align: center; color: var(--text-light); font-size: 14px; padding: 40px 0; }
+.cart-empty svg { width: 44px; height: 44px; fill: var(--gray-300); margin: 0 auto 12px; display: block; }
+.cart-item { display: flex; gap: 12px; align-items: center; border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 10px; }
+.cart-item img { width: 58px; height: 58px; object-fit: cover; border-radius: 6px; flex-shrink: 0; background: var(--cream); }
+.cart-item-info { flex: 1; min-width: 0; }
+.cart-item-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; line-height: 1.3; }
+.cart-item-price { font-size: 12px; color: var(--gray-400); }
+.cart-item-line { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+.cart-item .qty-stepper { width: auto; gap: 2px; padding: 2px; }
+.cart-item .qty-stepper button { width: 26px; height: 26px; font-size: 14px; }
+.cart-item-subtotal { font-size: 13px; font-weight: 700; color: var(--bordo); }
+.cart-item-remove { background: none; border: none; color: var(--gray-400); cursor: pointer; font-size: 15px; padding: 4px; transition: color 0.2s; font-family: var(--font); }
+.cart-item-remove:hover { color: #c0392b; }
+.cart-footer { border-top: 1px solid var(--gray-200); padding: 16px 20px; }
+.cart-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.cart-total span { font-size: 14px; color: var(--text-light); }
+.cart-total strong { font-size: 18px; font-weight: 800; color: var(--bordo); }
+.cart-note { font-size: 11px; color: var(--gray-400); margin-bottom: 10px; line-height: 1.4; }
+.btn-cart-wa { width: 100%; padding: 13px; background: #25D366; color: white; border: none; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s; font-family: var(--font); }
+.btn-cart-wa:hover { background: #1fb457; }
+.btn-cart-wa svg { width: 18px; height: 18px; fill: white; }
+.btn-cart-wa:disabled { background: var(--gray-200); color: var(--gray-400); cursor: not-allowed; }
+.cart-added-toast { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--bordo-dark); color: white; font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 50px; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 210; box-shadow: var(--shadow-lg); }
+.cart-added-toast.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
 /* About */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 .about-text p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 16px; }
-.about-text strong { color: var(--teal); }
+.about-text strong { color: var(--bordo); }
 .about-image { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/3; }
 .about-image img { width: 100%; height: 100%; object-fit: cover; }
 .about-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
 .about-value { text-align: center; padding: 20px; background: var(--cream); border-radius: var(--radius); }
 .about-value svg { width: 28px; height: 28px; fill: var(--gold); margin-bottom: 10px; }
-.about-value h4 { font-size: 14px; font-weight: 600; color: var(--teal); margin-bottom: 4px; }
+.about-value h4 { font-size: 14px; font-weight: 600; color: var(--bordo); margin-bottom: 4px; }
 .about-value p { font-size: 12px; color: var(--text-light); margin: 0; }
 
 /* FAQ */
 .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
 .faq-item { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; }
 .faq-question { width: 100%; padding: 18px 20px; text-align: left; font-size: 15px; font-weight: 600; color: var(--text); background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: var(--font); transition: color 0.2s; }
-.faq-question:hover { color: var(--teal); }
+.faq-question:hover { color: var(--bordo); }
 .faq-question svg { width: 16px; height: 16px; fill: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
 .faq-item.open .faq-question svg { transform: rotate(180deg); }
 .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 20px; }
@@ -156,22 +202,22 @@ ul { list-style: none; }
 
 /* Brands */
 .brands-section { background: var(--white); padding: 40px 0; border-top: 1px solid var(--gray-200); }
-.brands-title { text-align: center; font-size: 16px; font-weight: 600; color: var(--teal); margin-bottom: 24px; }
+.brands-title { text-align: center; font-size: 16px; font-weight: 600; color: var(--bordo); margin-bottom: 24px; }
 .brands-grid { display: flex; justify-content: center; align-items: center; gap: 36px; flex-wrap: wrap; }
 .brand-logo { font-weight: 700; letter-spacing: 2px; color: var(--gray-300); font-size: 18px; transition: color 0.3s; cursor: pointer; }
-.brand-logo:hover { color: var(--teal); }
+.brand-logo:hover { color: var(--bordo); }
 
 /* Newsletter */
-.newsletter { background: var(--teal); padding: 40px 0; text-align: center; }
+.newsletter { background: var(--bordo); padding: 40px 0; text-align: center; }
 .newsletter-title { font-size: 20px; font-weight: 700; color: white; margin-bottom: 6px; }
 .newsletter-text { font-size: 14px; color: rgba(255,255,255,0.75); margin-bottom: 18px; }
 .newsletter-form { display: flex; gap: 8px; max-width: 400px; margin: 0 auto; }
 .newsletter-form input { flex: 1; padding: 11px 16px; border: none; border-radius: 50px; font-size: 14px; outline: none; font-family: var(--font); }
-.newsletter-form button { padding: 11px 24px; background: var(--gold); color: var(--teal-dark); border: none; border-radius: 50px; font-weight: 700; font-size: 13px; cursor: pointer; transition: background 0.2s; font-family: var(--font); white-space: nowrap; }
+.newsletter-form button { padding: 11px 24px; background: var(--gold); color: var(--bordo-dark); border: none; border-radius: 50px; font-weight: 700; font-size: 13px; cursor: pointer; transition: background 0.2s; font-family: var(--font); white-space: nowrap; }
 .newsletter-form button:hover { background: #c49640; }
 
 /* Footer */
-.footer { background: var(--teal-dark); color: rgba(255,255,255,0.8); padding: 48px 0 0; }
+.footer { background: var(--bordo-dark); color: rgba(255,255,255,0.8); padding: 48px 0 0; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.5fr 2fr; gap: 36px; margin-bottom: 36px; }
 .footer-brand .logo-text { color: white; }
 .footer-brand .logo-text span { color: var(--gold); }
@@ -238,7 +284,7 @@ ul { list-style: none; }
     </linearGradient>
   </defs>
   <g id="boxco-logo">
-    <circle cx="50" cy="50" r="50" fill="#1A4747"/>
+    <circle cx="50" cy="50" r="50" fill="#6E1423"/>
     <g transform="translate(26,18)" fill="none" stroke="#D0D0D0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <rect x="2" y="8" width="44" height="32" rx="2"/>
       <line x1="2" y1="18" x2="46" y2="18"/>
@@ -291,6 +337,10 @@ ul { list-style: none; }
           <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           +549 3537 665026
         </a>
+        <div class="header-cart" onclick="openCart()" role="button" aria-label="Carrito">
+          <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="header-cart-count" id="cartCount" style="display:none;">0</span>
+        </div>
       </div>
     </div>
   </div>
@@ -413,7 +463,7 @@ ul { list-style: none; }
           </div>
         </div>
       </div>
-      <div class="about-image" style="background: linear-gradient(135deg, var(--teal), var(--teal-light)); display:flex; align-items:center; justify-content:center; color:white; text-align:center; padding:40px;">
+      <div class="about-image" style="background: linear-gradient(135deg, var(--bordo), var(--bordo-light)); display:flex; align-items:center; justify-content:center; color:white; text-align:center; padding:40px;">
         <div>
           <svg viewBox="0 0 100 100" width="80" height="80" style="margin:0 auto 16px;"><use href="#boxco-logo"/></svg>
           <p style="font-size:18px; font-weight:600; opacity:0.9;">BOX & CO</p>
@@ -466,7 +516,7 @@ ul { list-style: none; }
           ¿Cómo funciona la personalización con logo?
           <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><p>Elegís el producto, nos enviás el logo de tu empresa y seleccionamos la técnica de personalización ideal según el material y el diseño. Trabajamos con serigrafía, bordado, transfer, grabado láser, tampografía y más. La mayoría de los productos tienen servicio de logo en 24 horas.</p></div>
+        <div class="faq-answer"><p>Elegís el producto, nos enviás el logo de tu empresa y seleccionamos la técnica de personalización ideal según el material y el diseño. Trabajamos con serigrafía, bordado, transfer, grabado láser, tampografía y más.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
@@ -480,28 +530,28 @@ ul { list-style: none; }
           ¿Hacen envíos a todo el país?
           <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><p>Sí, hacemos envíos a toda la Argentina a través de correo OCA y motomensajería en Córdoba. Los tiempos de entrega dependen del destino y la disponibilidad de stock, pero generalmente estamos hablando de 3 a 10 días hábiles.</p></div>
+        <div class="faq-answer"><p>Sí, hacemos envíos a toda la Argentina. Los tiempos de entrega dependen del destino y la disponibilidad de stock, pero generalmente estamos hablando de 3 a 10 días hábiles.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           ¿Cuánto tarda la producción con logo?
           <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><p>Ofrecemos servicio <strong>Logo 24hs</strong> en una gran variedad de productos (con unidades mínimas y máximas). Para pedidos especiales o técnicas más complejas, los tiempos de producción son de 5 a 10 días hábiles.</p></div>
+        <div class="faq-answer"><p>Dependiendo del logo y la técnica. Los tiempos de producción son de 2 a 10 días hábiles.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           ¿Cómo solicito un presupuesto?
           <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><p>Podés contactarnos por WhatsApp al <a href="https://wa.me/5493537665026" style="color:var(--teal);font-weight:600;">+549 3537 665026</a> o por mail a <a href="mailto:boxycoregalos@gmail.com" style="color:var(--teal);font-weight:600;">boxycoregalos@gmail.com</a>. Decinos qué producto te interesa, las cantidades y el tipo de personalización, y te armamos una propuesta en el día.</p></div>
+        <div class="faq-answer"><p>Armá tu carrito en el catálogo, poné las cantidades y envialo por WhatsApp. También podés escribirnos directo al <a href="https://wa.me/5493537665026" style="color:var(--bordo);font-weight:600;">+549 3537 665026</a> o por mail a <a href="mailto:boxycoregalos@gmail.com" style="color:var(--bordo);font-weight:600;">boxycoregalos@gmail.com</a>. Te armamos una propuesta en el día.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           ¿Qué marcas trabajan?
           <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><p>Trabajamos con las mejores marcas del mercado: Stanley, Slazenger, Pampero, Sol's, Cardon, Pampa Spirit, Re:use me, entre otras. Todos nuestros productos son originales y de primera calidad.</p></div>
+        <div class="faq-answer"><p>Trabajamos con las mejores marcas del mercado: Stanley, Slazenger, Pampero, Sol's, Cardon, Pampa Spirit, Re:use me, entre otras. Todos nuestros productos son de primera calidad.</p></div>
       </div>
     </div>
   </div>
@@ -604,6 +654,31 @@ ul { list-style: none; }
   </div>
 </footer>
 
+<!-- Cart Drawer -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Carrito de presupuesto">
+  <div class="cart-header">
+    <h3>
+      <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      Tu presupuesto
+    </h3>
+    <button class="cart-close" onclick="closeCart()" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total estimado</span>
+      <strong id="cartTotal">$0</strong>
+    </div>
+    <p class="cart-note">Los precios no incluyen IVA ni personalización. Te enviamos la cotización final por WhatsApp.</p>
+    <button class="btn-cart-wa" id="cartWaBtn" onclick="sendCartWhatsApp()" disabled>
+      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      Solicitar presupuesto
+    </button>
+  </div>
+</aside>
+<div class="cart-added-toast" id="cartToast">✓ Agregado al carrito</div>
+
 <!-- Floats -->
 <a href="https://wa.me/5493537665026" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
@@ -651,11 +726,18 @@ const PRODUCTS = [
   {name:"Caja para Botellas", cat:"Drinkware", price:"$199", img:"https://images-cdn.zecat.com/generic_products/zo7kfxpx5cn-1768594227.webp", brand:"Zecat", tags:["SALE"]},
 ];
 
+let currentFilter = 'Todos';
+const cart = {}; // name -> { p, qty }
+
+function parsePrice(s) { return parseInt(String(s).replace(/[^0-9]/g, ''), 10) || 0; }
+function fmtPrice(n) { return '$' + n.toLocaleString('es-AR'); }
+
 function renderProducts(list) {
   const grid = document.getElementById('productGrid');
   grid.innerHTML = '';
   list.forEach(p => {
     const badge = p.tags.length ? `<span class="product-badge">${p.tags[0]}</span>` : '';
+    const inCart = cart[p.name] && cart[p.name].qty > 0;
     const card = document.createElement('div');
     card.className = 'product-card';
     card.innerHTML = `
@@ -664,21 +746,134 @@ function renderProducts(list) {
         <div class="product-cats"><span class="product-cat">${p.cat.toUpperCase()}</span></div>
         <div class="product-name">${p.name}</div>
         <div class="product-price">${p.price} <sup>+ IVA</sup></div>
+        <div class="product-add-wrap" id="add-${p.name.replace(/[^a-zA-Z0-9]/g, '')}">
+          ${inCart ? `
+            <div class="qty-stepper">
+              <button onclick="changeQty('${p.name.replace(/'/g, "\\'")}', -1)" aria-label="Restar">−</button>
+              <span class="qty-val">${cart[p.name].qty}</span>
+              <button onclick="changeQty('${p.name.replace(/'/g, "\\'")}', 1)" aria-label="Sumar">+</button>
+            </div>` : `
+            <button class="btn-add" onclick="addToCart('${p.name.replace(/'/g, "\\'")}')">
+              <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+              Agregar
+            </button>`}
+        </div>
       </div>`;
     grid.appendChild(card);
   });
 }
+
+function addToCart(name) {
+  const p = PRODUCTS.find(x => x.name === name);
+  if (!p) return;
+  cart[name] = cart[name] || { p, qty: 0 };
+  cart[name].qty++;
+  renderProducts(getFiltered());
+  updateCartUI();
+  const toast = document.getElementById('cartToast');
+  toast.textContent = '✓ ' + name + ' agregado al carrito';
+  toast.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => toast.classList.remove('show'), 1800);
+}
+
+function changeQty(name, delta) {
+  if (!cart[name]) return;
+  cart[name].qty += delta;
+  if (cart[name].qty <= 0) delete cart[name];
+  renderProducts(getFiltered());
+  renderCart();
+  updateCartUI();
+}
+
+function removeFromCart(name) {
+  delete cart[name];
+  renderProducts(getFiltered());
+  renderCart();
+  updateCartUI();
+}
+
+function cartCount() {
+  return Object.values(cart).reduce((a, i) => a + i.qty, 0);
+}
+
+function cartTotal() {
+  return Object.values(cart).reduce((a, i) => a + parsePrice(i.p.price) * i.qty, 0);
+}
+
+function updateCartUI() {
+  const n = cartCount();
+  const badge = document.getElementById('cartCount');
+  badge.textContent = n;
+  badge.style.display = n > 0 ? 'flex' : 'none';
+}
+
+function renderCart() {
+  const items = document.getElementById('cartItems');
+  const btn = document.getElementById('cartWaBtn');
+  const totalEl = document.getElementById('cartTotal');
+  const names = Object.keys(cart);
+  if (!names.length) {
+    items.innerHTML = `<div class="cart-empty">
+      <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      Tu carrito está vacío.<br>Agregá productos del catálogo para armar tu presupuesto.
+    </div>`;
+    btn.disabled = true;
+    totalEl.textContent = '$0';
+    return;
+  }
+  items.innerHTML = names.map(name => {
+    const { p, qty } = cart[name];
+    const sub = parsePrice(p.price) * qty;
+    return `
+      <div class="cart-item">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <div class="cart-item-info">
+          <div class="cart-item-name">${p.name}</div>
+          <div class="cart-item-price">${p.price} <sup>+ IVA</sup> / u.</div>
+          <div class="cart-item-line">
+            <div class="qty-stepper">
+              <button onclick="changeQty('${name.replace(/'/g, "\\'")}', -1)" aria-label="Restar">−</button>
+              <span class="qty-val">${qty}</span>
+              <button onclick="changeQty('${name.replace(/'/g, "\\'")}', 1)" aria-label="Sumar">+</button>
+            </div>
+            <span class="cart-item-subtotal">${fmtPrice(sub)}</span>
+          </div>
+        </div>
+        <button class="cart-item-remove" onclick="removeFromCart('${name.replace(/'/g, "\\'")}')" aria-label="Quitar">✕</button>
+      </div>`;
+  }).join('');
+  btn.disabled = false;
+  totalEl.textContent = fmtPrice(cartTotal());
+}
+
+function openCart() { renderCart(); document.getElementById('cartDrawer').classList.add('open'); document.getElementById('cartOverlay').classList.add('open'); }
+function closeCart() { document.getElementById('cartDrawer').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('open'); }
+
+function sendCartWhatsApp() {
+  const names = Object.keys(cart);
+  if (!names.length) return;
+  const lines = names.map(name => {
+    const { p, qty } = cart[name];
+    const sub = parsePrice(p.price) * qty;
+    return `• ${p.name} x${qty} — ${fmtPrice(sub)}`;
+  }).join('\n');
+  const msg = `Hola Box & Co 👋 Quiero un presupuesto para:%0A${encodeURIComponent(lines)}%0A%0ATotal estimado: ${encodeURIComponent(fmtPrice(cartTotal()))} (sin IVA ni personalización)`;
+  window.open('https://wa.me/5493537665026?text=' + msg, '_blank');
+}
+
+function getFiltered() {
+  if (currentFilter === 'Todos') return PRODUCTS;
+  return PRODUCTS.filter(p => p.cat === currentFilter);
+}
+
 renderProducts(PRODUCTS);
 document.querySelectorAll('.products-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.products-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    const f = tab.textContent.trim();
-    if (f === 'Todos') renderProducts(PRODUCTS);
-    else if (f === 'Drinkware') renderProducts(PRODUCTS.filter(p => p.cat === 'Drinkware'));
-    else if (f === 'Mochilas') renderProducts(PRODUCTS.filter(p => p.cat === 'Mochilas'));
-    else if (f === 'Indumentaria') renderProducts(PRODUCTS.filter(p => p.cat === 'Indumentaria'));
-    else renderProducts(PRODUCTS);
+    currentFilter = tab.textContent.trim();
+    renderProducts(getFiltered());
   });
 });
 </script>
