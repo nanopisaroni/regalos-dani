@@ -282,7 +282,6 @@ ul { list-style: none; }
 .pm-add svg { width: 16px; height: 16px; fill: currentColor; }
 .pm-wa-link { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--gray-200); font-size: 13px; color: var(--text-light); }
 .pm-wa-link a { color: var(--bordo); font-weight: 600; }
-.pm-min { font-size: 12px; color: var(--gray-400); margin-top: 4px; }
 @media (max-width: 768px) {
   .pm-layout { grid-template-columns: 1fr; }
   .pm-gallery { min-height: 0; }
@@ -756,7 +755,6 @@ ul { list-style: none; }
             Agregar al carrito
           </button>
         </div>
-        <div class="pm-min" id="pmMin"></div>
         <div class="pm-wa-link">¿Buscás algo puntual? <a href="https://wa.me/5493537665026" target="_blank">Escribinos por WhatsApp</a></div>
       </div>
     </div>
@@ -888,8 +886,7 @@ function openProductModal(id) {
     thumbs.appendChild(b);
   });
 
-  // min order
-  document.getElementById('pmMin').textContent = p.min > 1 ? `Mínimo de compra: ${p.min.toLocaleString('es-AR')} unidades` : '';
+  // min order eliminado — sin mínimos de compra
 
   updatePmQty();
   document.getElementById('pmOverlay').classList.add('open');
@@ -902,9 +899,7 @@ function closeProductModal() {
 }
 
 function pmChangeQty(d) {
-  const p = pmProduct;
-  const min = Math.max(1, p.min || 1);
-  pmQty = Math.max(min, pmQty + d);
+  pmQty = Math.max(1, pmQty + d);
   updatePmQty();
 }
 
