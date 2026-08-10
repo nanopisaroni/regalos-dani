@@ -241,6 +241,57 @@ ul { list-style: none; }
 .whatsapp-float:hover { transform: scale(1.05); }
 .whatsapp-float svg { width: 26px; height: 26px; fill: white; }
 
+/* Product Modal */
+.pm-overlay { position: fixed; inset: 0; background: rgba(20,10,12,0.6); opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; z-index: 300; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.pm-overlay.open { opacity: 1; visibility: visible; }
+.pm-modal { background: var(--white); border-radius: 16px; width: 100%; max-width: 860px; max-height: 90vh; overflow-y: auto; transform: translateY(20px) scale(0.98); transition: transform 0.3s ease; box-shadow: 0 24px 80px rgba(0,0,0,0.3); }
+.pm-overlay.open .pm-modal { transform: translateY(0) scale(1); }
+.pm-close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; border: none; background: rgba(0,0,0,0.06); color: var(--text); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 2; font-family: var(--font); }
+.pm-close:hover { background: rgba(0,0,0,0.14); }
+.pm-layout { display: grid; grid-template-columns: 1fr 1fr; }
+.pm-gallery { position: relative; background: var(--cream); min-height: 380px; display: flex; flex-direction: column; }
+.pm-main-img { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; min-height: 300px; }
+.pm-main-img img { max-height: 380px; width: auto; max-width: 100%; object-fit: contain; border-radius: 10px; }
+.pm-thumbs { display: flex; gap: 8px; padding: 0 20px 20px; }
+.pm-thumb { width: 56px; height: 56px; border-radius: 8px; overflow: hidden; border: 2px solid var(--gray-200); cursor: pointer; padding: 0; background: white; transition: border-color 0.2s; }
+.pm-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pm-thumb.active { border-color: var(--bordo); }
+.pm-info { padding: 32px 28px; display: flex; flex-direction: column; }
+.pm-cat { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 8px; }
+.pm-name { font-size: 24px; font-weight: 800; color: var(--bordo); line-height: 1.2; margin-bottom: 8px; }
+.pm-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.pm-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; background: var(--bordo); color: white; letter-spacing: 0.5px; }
+.pm-badge.eco { background: #2e7d32; }
+.pm-badge.sale { background: #c0392b; }
+.pm-badge.new { background: var(--gold); color: var(--bordo-dark); }
+.pm-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; }
+.pm-meta { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.pm-meta-item { display: flex; gap: 10px; font-size: 13px; color: var(--text-light); align-items: flex-start; }
+.pm-meta-item svg { width: 16px; height: 16px; fill: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.pm-price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+.pm-price { font-size: 30px; font-weight: 800; color: var(--bordo); }
+.pm-price sup { font-size: 12px; font-weight: 400; color: var(--gray-400); }
+.pm-discount-hint { font-size: 12px; color: var(--gray-400); margin-bottom: 16px; }
+.pm-buy { display: flex; gap: 10px; margin-top: 6px; }
+.pm-qty { display: flex; align-items: center; justify-content: space-between; background: var(--cream); border: 1px solid var(--gray-200); border-radius: 10px; padding: 4px; flex-shrink: 0; }
+.pm-qty button { width: 36px; height: 36px; border: none; background: white; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: 700; color: var(--bordo); display: flex; align-items: center; justify-content: center; transition: background 0.2s; font-family: var(--font); }
+.pm-qty button:hover { background: var(--gold-light); }
+.pm-qty .qty-val { font-size: 15px; font-weight: 700; color: var(--bordo); min-width: 36px; text-align: center; }
+.pm-add { flex: 1; padding: 12px 18px; background: var(--bordo); color: white; border: none; border-radius: 10px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; font-family: var(--font); transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.pm-add:hover { background: var(--bordo-light); }
+.pm-add svg { width: 16px; height: 16px; fill: currentColor; }
+.pm-wa-link { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--gray-200); font-size: 13px; color: var(--text-light); }
+.pm-wa-link a { color: var(--bordo); font-weight: 600; }
+.pm-min { font-size: 12px; color: var(--gray-400); margin-top: 4px; }
+@media (max-width: 768px) {
+  .pm-layout { grid-template-columns: 1fr; }
+  .pm-gallery { min-height: 0; }
+  .pm-main-img { min-height: 220px; }
+  .pm-main-img img { max-height: 260px; }
+  .pm-info { padding: 24px 20px; }
+  .pm-name { font-size: 20px; }
+}
+
 /* Instagram Float */
 .ig-float { position: fixed; bottom: 82px; right: 20px; z-index: 99; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 12px rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.2s; }
 .ig-float:hover { transform: scale(1.05); }
@@ -489,6 +540,7 @@ ul { list-style: none; }
         <div class="section-tag" style="text-align:left;">Catálogo</div>
         <h2 class="section-title" style="margin-bottom:0;">Nuestros productos</h2>
         <p style="font-size:14px;color:var(--text-light);margin-top:4px;">552 productos listos para personalizar</p>
+        <p style="font-size:13px;color:var(--bordo);font-weight:600;margin-top:8px;">💬 Consultá descuentos por cantidad <a href="https://wa.me/5493537665026" target="_blank" style="text-decoration:underline;">por WhatsApp</a></p>
       </div>
       <div class="products-tabs" id="productsTabs"></div>
     </div>
@@ -665,6 +717,7 @@ ul { list-style: none; }
       <strong id="cartTotal">$0</strong>
     </div>
     <p class="cart-note">Los precios no incluyen IVA ni personalización. Te enviamos la cotización final por WhatsApp.</p>
+    <p class="cart-note" style="font-weight:600;color:var(--bordo);">💬 ¿Pedido grande? <a href="https://wa.me/5493537665026" target="_blank" style="text-decoration:underline;">Consultá descuentos por cantidad</a></p>
     <button class="btn-cart-wa" id="cartWaBtn" onclick="sendCartWhatsApp()" disabled>
       <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
       Solicitar presupuesto
@@ -672,6 +725,43 @@ ul { list-style: none; }
   </div>
 </aside>
 <div class="cart-added-toast" id="cartToast">✓ Agregado al carrito</div>
+
+<!-- Product Modal -->
+<div class="pm-overlay" id="pmOverlay" onclick="if(event.target===this)closeProductModal()">
+  <div class="pm-modal" role="dialog" aria-modal="true" aria-label="Detalle del producto">
+    <button class="pm-close" onclick="closeProductModal()" aria-label="Cerrar">✕</button>
+    <div class="pm-layout">
+      <div class="pm-gallery">
+        <div class="pm-main-img"><img id="pmMainImg" src="" alt=""></div>
+        <div class="pm-thumbs" id="pmThumbs"></div>
+      </div>
+      <div class="pm-info">
+        <div class="pm-cat" id="pmCat"></div>
+        <h3 class="pm-name" id="pmName"></h3>
+        <div class="pm-badges" id="pmBadges"></div>
+        <p class="pm-desc" id="pmDesc"></p>
+        <div class="pm-meta" id="pmMeta"></div>
+        <div class="pm-price-row">
+          <div class="pm-price" id="pmPrice"></div>
+        </div>
+        <div class="pm-discount-hint">Consultá descuentos por cantidad para pedidos mayores</div>
+        <div class="pm-buy">
+          <div class="pm-qty">
+            <button onclick="pmChangeQty(-1)" aria-label="Restar">−</button>
+            <span class="qty-val" id="pmQtyVal">1</span>
+            <button onclick="pmChangeQty(1)" aria-label="Sumar">+</button>
+          </div>
+          <button class="pm-add" id="pmAddBtn" onclick="pmAddToCart()">
+            <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+            Agregar al carrito
+          </button>
+        </div>
+        <div class="pm-min" id="pmMin"></div>
+        <div class="pm-wa-link">¿Buscás algo puntual? <a href="https://wa.me/5493537665026" target="_blank">Escribinos por WhatsApp</a></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Floats -->
 <a href="https://wa.me/5493537665026" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
@@ -720,6 +810,8 @@ function renderProducts(list) {
     const inCart = cart[p.name] && cart[p.name].qty > 0;
     const card = document.createElement('div');
     card.className = 'product-card';
+    card.style.cursor = 'pointer';
+    card.onclick = () => openProductModal(p.id);
     card.innerHTML = `
       <div class="product-image">${badge}<img src="${p.img}" alt="${p.name}" loading="lazy"></div>
       <div class="product-body">
@@ -728,12 +820,12 @@ function renderProducts(list) {
         <div class="product-price">${fmtPrice(p.price)} <sup>+ IVA</sup></div>
         <div class="product-add-wrap" id="add-${p.name.replace(/[^a-zA-Z0-9]/g, '')}">
           ${inCart ? `
-            <div class="qty-stepper">
+            <div class="qty-stepper" onclick="event.stopPropagation()">
               <button onclick="changeQty('${p.name.replace(/'/g, "\\'")}', -1)" aria-label="Restar">−</button>
               <span class="qty-val">${cart[p.name].qty}</span>
               <button onclick="changeQty('${p.name.replace(/'/g, "\\'")}', 1)" aria-label="Sumar">+</button>
             </div>` : `
-            <button class="btn-add" onclick="addToCart('${p.name.replace(/'/g, "\\'")}')">
+            <button class="btn-add" onclick="event.stopPropagation(); addToCart('${p.name.replace(/'/g, "\\'")}')">
               <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
               Agregar
             </button>`}
@@ -753,6 +845,89 @@ function showMore() {
   shownCount += 60;
   renderProducts(getFiltered());
 }
+
+/* ===== Product Modal ===== */
+let pmProduct = null;
+let pmQty = 1;
+
+function openProductModal(id) {
+  pmProduct = PRODUCTS.find(p => p.id === id);
+  if (!pmProduct) return;
+  pmQty = 1;
+  const p = pmProduct;
+  document.getElementById('pmMainImg').src = p.img;
+  document.getElementById('pmMainImg').alt = p.name;
+  document.getElementById('pmCat').textContent = p.cat;
+  document.getElementById('pmName').textContent = p.name;
+  document.getElementById('pmDesc').textContent = p.desc || 'Consultá disponibilidad y detalles por WhatsApp.';
+  document.getElementById('pmPrice').innerHTML = fmtPrice(p.price) + ' <sup>+ IVA</sup>';
+
+  // badges
+  const badgeMap = { 'ECO': 'eco', 'SALE': 'sale', 'NUEVO': 'new', 'LOGO 24HS': '' };
+  document.getElementById('pmBadges').innerHTML = p.tags.map(t =>
+    `<span class="pm-badge ${badgeMap[t] || ''}">${t}</span>`).join('');
+
+  // metas
+  const metas = [];
+  metas.push(`<div class="pm-meta-item"><svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0v10l-8 4m0-14v10m-8-6v6"/></svg><span>Personalización con tu logo</span></div>`);
+  if (p.tech && p.tech.length) metas.push(`<div class="pm-meta-item"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg><span>Técnicas: ${p.tech.join(', ')}</span></div>`);
+  document.getElementById('pmMeta').innerHTML = metas.join('');
+
+  // thumbnails
+  const thumbs = document.getElementById('pmThumbs');
+  thumbs.innerHTML = '';
+  (p.imgs && p.imgs.length ? p.imgs : [p.img]).forEach((u, i) => {
+    const b = document.createElement('button');
+    b.className = 'pm-thumb' + (i === 0 ? ' active' : '');
+    b.innerHTML = `<img src="${u}" alt="">`;
+    b.onclick = () => {
+      document.getElementById('pmMainImg').src = u;
+      document.querySelectorAll('.pm-thumb').forEach(t => t.classList.remove('active'));
+      b.classList.add('active');
+    };
+    thumbs.appendChild(b);
+  });
+
+  // min order
+  document.getElementById('pmMin').textContent = p.min > 1 ? `Mínimo de compra: ${p.min.toLocaleString('es-AR')} unidades` : '';
+
+  updatePmQty();
+  document.getElementById('pmOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProductModal() {
+  document.getElementById('pmOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function pmChangeQty(d) {
+  const p = pmProduct;
+  const min = Math.max(1, p.min || 1);
+  pmQty = Math.max(min, pmQty + d);
+  updatePmQty();
+}
+
+function updatePmQty() {
+  document.getElementById('pmQtyVal').textContent = pmQty;
+}
+
+function pmAddToCart() {
+  if (!pmProduct) return;
+  const p = pmProduct;
+  cart[p.name] = { p, qty: (cart[p.name] ? cart[p.name].qty : 0) + pmQty };
+  renderProducts(getFiltered());
+  updateCartUI();
+  closeProductModal();
+  const toast = document.getElementById('cartToast');
+  toast.textContent = '✓ ' + pmQty + '× ' + p.name + ' agregado al carrito';
+  toast.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => toast.classList.remove('show'), 1800);
+  openCart();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProductModal(); });
 
 function addToCart(name) {
   const p = PRODUCTS.find(x => x.name === name);
