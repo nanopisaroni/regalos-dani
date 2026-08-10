@@ -12,6 +12,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -56,7 +58,7 @@ ul { list-style: none; }
 .header { background: var(--white); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; gap: 16px; }
 .logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-.logo svg { width: 48px; height: 48px; }
+.logo img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; display: block; }
 .logo-text { font-size: 22px; font-weight: 800; color: var(--bordo); line-height: 1.1; letter-spacing: 1px; }
 .logo-text span { color: var(--gold); }
 .logo-sub { font-size: 9px; color: var(--gray-400); font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
@@ -267,7 +269,7 @@ ul { list-style: none; }
   .products-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
   .categories-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-title { font-size: 22px; }
-  .logo svg { width: 40px; height: 40px; }
+  .logo img { width: 42px; height: 42px; }
   .logo-text { font-size: 18px; }
 }
 </style>
@@ -322,7 +324,7 @@ ul { list-style: none; }
   <div class="container">
     <div class="header-inner">
       <a href="#" class="logo">
-        <svg viewBox="0 0 100 100" width="48" height="48"><use href="#boxco-logo"/></svg>
+        <img src="img/logo-circular.jpg" alt="Box & Co" width="52" height="52">
         <div>
           <div class="logo-text">BOX <span>&</span> CO</div>
           <div class="logo-sub">REGALOS EMPRESARIALES</div>
@@ -463,12 +465,8 @@ ul { list-style: none; }
           </div>
         </div>
       </div>
-      <div class="about-image" style="background: linear-gradient(135deg, var(--bordo), var(--bordo-light)); display:flex; align-items:center; justify-content:center; color:white; text-align:center; padding:40px;">
-        <div>
-          <svg viewBox="0 0 100 100" width="80" height="80" style="margin:0 auto 16px;"><use href="#boxco-logo"/></svg>
-          <p style="font-size:18px; font-weight:600; opacity:0.9;">BOX & CO</p>
-          <p style="font-size:13px; opacity:0.6;">Detalles que crean vínculos</p>
-        </div>
+      <div class="about-image">
+        <img src="img/logo-bordo.jpg" alt="Box & Co — Detalles que crean vínculos" style="width:100%; height:100%; object-fit:cover;">
       </div>
     </div>
   </div>
