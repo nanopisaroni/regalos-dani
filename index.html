@@ -72,11 +72,12 @@ ul { list-style: none; }
 .header-cart-count { position: absolute; top: -4px; right: -4px; background: var(--gold); color: var(--bordo-dark); font-size: 10px; font-weight: 700; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
 /* Hero */
-.hero { position: relative; overflow: hidden; background: var(--bordo); min-height: 380px; display: flex; align-items: center; }
+.hero { position: relative; overflow: hidden; background: linear-gradient(120deg, var(--white) 0%, var(--cream) 55%, var(--gold-light) 130%); min-height: 380px; display: flex; align-items: center; }
+.hero::before { content: ''; position: absolute; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.18) 0%, transparent 70%); top: -120px; right: -80px; }
 .hero-content { max-width: 560px; padding: 50px 0; }
-.hero-tagline { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--gold); margin-bottom: 12px; }
-.hero-title { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 14px; }
-.hero-subtitle { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 24px; max-width: 460px; }
+.hero-tagline { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--bordo); margin-bottom: 12px; }
+.hero-title { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; color: var(--bordo); line-height: 1.15; margin-bottom: 14px; }
+.hero-subtitle { font-size: 15px; color: var(--text-light); line-height: 1.6; margin-bottom: 24px; max-width: 460px; }
 .hero-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--bordo-dark); padding: 13px 30px; border-radius: 50px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; font-family: var(--font); }
 .hero-btn:hover { background: #c49640; transform: translateY(-1px); }
 
@@ -399,10 +400,10 @@ ul { list-style: none; }
 </header>
 
 <!-- Banner fin de año -->
-<div style="background: linear-gradient(90deg, var(--bordo) 0%, var(--bordo-light) 50%, var(--bordo) 100%); text-align:center; padding:10px 16px;">
-  <a href="/fin-de-ano.html" style="display:inline-flex; align-items:center; gap:8px; color:#fff; font-size:14px; font-weight:600;">
+<div style="background: linear-gradient(90deg, var(--gold-light) 0%, var(--cream) 50%, var(--gold-light) 100%); border-bottom:1px solid var(--gray-200); text-align:center; padding:10px 16px;">
+  <a href="/fin-de-ano.html" style="display:inline-flex; align-items:center; gap:8px; color:var(--bordo); font-size:14px; font-weight:600;">
     <span style="font-size:16px;">🎁</span> Temporada Fin de Año: cajas y kits corporativos con tu logo
-    <span style="background:var(--gold); color:var(--bordo-dark); padding:3px 12px; border-radius:50px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Ver más →</span>
+    <span style="background:var(--bordo); color:var(--gold); padding:3px 12px; border-radius:50px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Ver más →</span>
   </a>
 </div>
 
