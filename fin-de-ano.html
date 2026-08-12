@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box & Co — Regalos corporativos de fin de año</title>
+<meta name="description" content="Regalos empresariales de fin de año personalizados con tu logo. Cajas, canastas y kits corporativos. Envíos a todo el país, con foco en Córdoba y Santa Fe. Pedidos grandes sin problema.">
+<meta property="og:title" content="Box & Co — Regalos de fin de año para tu empresa">
+<meta property="og:description" content="Cajas, canastas y kits corporativos personalizados con tu logo. Pedidos grandes, envíos a todo el país.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#6E1423">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bordo: #6E1423;
+  --bordo-light: #8E2736;
+  --bordo-dark: #450B13;
+  --gold: #D4A853;
+  --gold-light: #F0E4C8;
+  --cream: #F8F6F1;
+  --white: #FFFFFF;
+  --gray-100: #F0EFEB;
+  --gray-200: #E0DDD6;
+  --gray-400: #9C9890;
+  --text: #2C2C2C;
+  --text-light: #6B6862;
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.07);
+  --radius: 12px;
+  --max-w: 1200px;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--text); background: var(--cream); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+ul { list-style: none; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+
+/* Top Bar */
+.top-bar { background: var(--bordo-dark); color: rgba(255,255,255,0.8); font-size: 13px; padding: 8px 0; }
+.top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+.top-bar a { transition: color 0.2s; }
+.top-bar a:hover { color: var(--gold); }
+.top-bar-contact { display: flex; align-items: center; gap: 4px; }
+
+/* Header */
+.header { background: var(--white); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; gap: 16px; }
+.logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.logo img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; display: block; }
+.logo-text { font-size: 22px; font-weight: 800; color: var(--bordo); line-height: 1.1; letter-spacing: 1px; }
+.logo-text span { color: var(--gold); }
+.logo-sub { font-size: 9px; color: var(--gray-400); font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
+.header-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--bordo-dark); padding: 11px 24px; border-radius: 50px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s, transform 0.2s; }
+.header-cta:hover { background: #c49640; transform: translateY(-1px); }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--bordo) 0%, var(--bordo-dark) 100%); min-height: 420px; display: flex; align-items: center; }
+.hero::before { content: '❄'; position: absolute; font-size: 90px; color: rgba(255,255,255,0.05); top: 40px; right: 12%; animation: floaty 6s ease-in-out infinite; }
+.hero::after { content: '✦'; position: absolute; font-size: 60px; color: rgba(212,168,83,0.12); bottom: 60px; left: 10%; animation: floaty 8s ease-in-out infinite reverse; }
+@keyframes floaty { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-18px) rotate(8deg); } }
+.hero-content { max-width: 620px; padding: 60px 0; position: relative; z-index: 1; }
+.hero-tagline { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--bordo-dark); background: var(--gold); padding: 6px 14px; border-radius: 50px; margin-bottom: 16px; }
+.hero-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: var(--white); line-height: 1.12; margin-bottom: 16px; }
+.hero-subtitle { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 28px; max-width: 480px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-gold { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--bordo-dark); padding: 14px 32px; border-radius: 50px; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s, transform 0.2s; }
+.btn-gold:hover { background: #c49640; transform: translateY(-1px); }
+.btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--white); padding: 14px 32px; border-radius: 50px; font-weight: 600; font-size: 14px; border: 1.5px solid rgba(255,255,255,0.4); transition: border-color 0.2s, background 0.2s; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-stats { display: flex; gap: 36px; margin-top: 36px; flex-wrap: wrap; }
+.hero-stat { color: rgba(255,255,255,0.85); }
+.hero-stat strong { display: block; font-size: 22px; font-weight: 800; color: var(--gold); }
+.hero-stat span { font-size: 12px; opacity: 0.7; }
+
+/* Stripe de urgencia */
+.urgency { background: var(--gold); color: var(--bordo-dark); text-align: center; padding: 12px 16px; font-size: 14px; font-weight: 600; }
+.urgency strong { text-decoration: underline; }
+
+/* Secciones */
+.section { padding: 64px 0; }
+.section-alt { background: var(--white); }
+.section-header { text-align: center; margin-bottom: 40px; }
+.section-tag { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 8px; }
+.section-title { font-size: clamp(24px, 3vw, 34px); font-weight: 800; color: var(--bordo); margin-bottom: 12px; }
+.section-subtitle { font-size: 16px; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+/* Boxes (cajas) */
+.boxes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.box-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
+.box-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.box-img { aspect-ratio: 1; background: var(--cream); overflow: hidden; }
+.box-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.box-card:hover .box-img img { transform: scale(1.04); }
+.box-body { padding: 16px; }
+.box-name { font-size: 14px; font-weight: 600; margin-bottom: 6px; line-height: 1.35; }
+.box-desc { font-size: 12px; color: var(--text-light); margin-bottom: 12px; line-height: 1.5; }
+.box-wa { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 10px 12px; background: #25D366; color: white; border-radius: 8px; font-size: 12px; font-weight: 700; transition: background 0.2s; }
+.box-wa:hover { background: #1fb457; }
+.box-wa svg { width: 14px; height: 14px; fill: white; }
+
+/* Kits / ideas */
+.kits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.kit-card { background: var(--cream); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 28px 24px; text-align: center; transition: box-shadow 0.2s, transform 0.2s; }
+.kit-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.kit-icon { width: 56px; height: 56px; border-radius: 14px; background: var(--gold-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+.kit-icon svg { width: 26px; height: 26px; fill: var(--gold); }
+.kit-card h3 { font-size: 16px; font-weight: 700; color: var(--bordo); margin-bottom: 8px; }
+.kit-card p { font-size: 13px; color: var(--text-light); line-height: 1.55; }
+
+/* Cómo funciona */
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.step { text-align: center; padding: 24px 16px; background: var(--cream); border-radius: var(--radius); }
+.step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--bordo); color: var(--gold); font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+.step h3 { font-size: 14px; font-weight: 700; color: var(--bordo); margin-bottom: 6px; }
+.step p { font-size: 12px; color: var(--text-light); line-height: 1.5; }
+
+/* Banner CTA */
+.banner-section { background: linear-gradient(135deg, var(--bordo) 0%, var(--bordo-dark) 100%); padding: 64px 0; text-align: center; }
+.banner-title { font-size: clamp(22px, 3vw, 32px); font-weight: 800; color: white; margin-bottom: 12px; }
+.banner-text { font-size: 15px; color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto 28px; }
+
+/* FAQ */
+.faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+.faq-item { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; }
+.faq-question { width: 100%; padding: 18px 20px; text-align: left; font-size: 15px; font-weight: 600; color: var(--text); background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: var(--font); transition: color 0.2s; }
+.faq-question:hover { color: var(--bordo); }
+.faq-question svg { width: 16px; height: 16px; fill: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
+.faq-item.open .faq-question svg { transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 20px; }
+.faq-item.open .faq-answer { max-height: 300px; padding: 0 20px 18px; }
+.faq-answer p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+.faq-answer a { color: var(--bordo); font-weight: 600; }
+
+/* Footer */
+.footer { background: var(--bordo-dark); color: rgba(255,255,255,0.8); padding: 48px 0 0; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 36px; margin-bottom: 36px; }
+.footer-brand .logo-text { color: white; }
+.footer-brand .logo-text span { color: var(--gold); }
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 12px; line-height: 1.6; max-width: 320px; }
+.footer h4 { font-size: 14px; font-weight: 600; color: white; margin-bottom: 16px; }
+.footer-links { display: flex; flex-direction: column; gap: 8px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-contact-item { display: flex; gap: 10px; margin-bottom: 10px; font-size: 13px; color: rgba(255,255,255,0.55); }
+.footer-contact-item svg { width: 14px; height: 14px; fill: var(--gold); flex-shrink: 0; margin-top: 3px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 18px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 12px; color: rgba(255,255,255,0.35); }
+.footer-social { display: flex; gap: 10px; }
+.footer-social a { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.footer-social a:hover { background: var(--gold); }
+.footer-social svg { width: 14px; height: 14px; fill: white; }
+
+/* WhatsApp float */
+.whatsapp-float { position: fixed; bottom: 20px; right: 20px; z-index: 99; width: 52px; height: 52px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,0.35); cursor: pointer; transition: transform 0.2s; }
+.whatsapp-float:hover { transform: scale(1.05); }
+.whatsapp-float svg { width: 26px; height: 26px; fill: white; }
+
+@media (max-width: 1024px) {
+  .boxes-grid { grid-template-columns: repeat(2, 1fr); }
+  .kits-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .hero { min-height: 360px; }
+  .hero-content { padding: 44px 0; }
+  .header-cta { display: none; }
+  .hero-stats { gap: 20px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .boxes-grid { grid-template-columns: 1fr; }
+  .kits-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .logo img { width: 42px; height: 42px; }
+  .logo-text { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-contact">
+      <span>✨ Detalles que crean vínculos — Temporada Fin de Año 2026</span>
+    </div>
+    <div class="top-bar-contact">
+      <a href="https://wa.me/5493537665026" target="_blank" style="display:flex;align-items:center;gap:4px;">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="#25D366"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        +549 3537 665026
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <img src="img/logo-circular.jpg" alt="Box & Co" width="52" height="52">
+        <div>
+          <div class="logo-text">BOX <span>&</span> CO</div>
+          <div class="logo-sub">REGALOS EMPRESARIALES</div>
+        </div>
+      </a>
+      <a href="https://wa.me/5493537665026?text=Hola%20Box%20%26%20Co%20%F0%9F%91%8B%20Quiero%20armar%20los%20regalos%20de%20fin%20de%20a%C3%B1o%20para%20mi%20empresa" target="_blank" class="header-cta">Pedir cotización →</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tagline">🎁 Temporada Fin de Año 2026</div>
+      <h1 class="hero-title">Regalos corporativos que cierran el año con broche de oro</h1>
+      <p class="hero-subtitle">Cajas, canastas y kits personalizados con el logo de tu empresa para agasajar a clientes y colaboradores. Hacemos pedidos grandes, con envíos a todo el país.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/5493537665026?text=Hola%20Box%20%26%20Co%20%F0%9F%91%8B%20Quiero%20armar%20los%20regalos%20de%20fin%20de%20a%C3%B1o%20para%20mi%20empresa" target="_blank" class="btn-gold">Cotizá hoy →</a>
+        <a href="#boxes" class="btn-ghost">Ver ideas</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>+640</strong><span>productos personalizables</span></div>
+        <div class="hero-stat"><strong>Pedidos grandes</strong><span>sin límite de unidades</span></div>
+        <div class="hero-stat"><strong>Todo el país</strong><span>foco Córdoba y Santa Fe</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Urgencia -->
+<div class="urgency">
+  ⏰ La producción con logo lleva tiempo: <strong>reservá tu pedido con anticipación</strong> para asegurar la entrega antes de las fiestas.
+</div>
+
+<!-- Boxes -->
+<section class="section" id="boxes">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Nuestras cajas</div>
+      <h2 class="section-title">Boxes de vino premium</h2>
+      <p class="section-subtitle">Nuestras cajas estrella: vino Malbec + accesorios, en caja personalizada con tu logo. Consultá precios y descuentos por cantidad.</p>
+    </div>
+    <div class="boxes-grid">
+      <div class="box-card">
+        <div class="box-img"><img src="img/cajas/box-vino-sal-sacacorcho-auto.jpg" alt="Box Vino + Sal + Sacacorcho Automático" loading="lazy"></div>
+        <div class="box-body">
+          <div class="box-name">Box Vino + Sal + Sacacorcho Automático</div>
+          <div class="box-desc">El regalo premium de la temporada. Vino Malbec, sal marina con especias y sacacorcho automático.</div>
+          <a class="box-wa" href="https://wa.me/5493537665026?text=Hola%20Box%20%26%20Co%20%F0%9F%91%8B%20Me%20interesa%20la%20Box%20Vino%20%2B%20Sal%20%2B%20Sacacorcho%20Autom%C3%A1tico%20para%20fin%20de%20a%C3%B1o" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+      <div class="box-card">
+        <div class="box-img"><img src="img/cajas/box-vino-copa-sales-x2.jpg" alt="Box Vino + Copa + Sales x2" loading="lazy"></div>
+        <div class="box-body">
+          <div class="box-name">Box Vino + Copa + Sales x2</div>
+          <div class="box-desc">El combo completo: vino Malbec, copa y dos sales gourmet. Para regalar en grande.</div>
+          <a class="box-wa" href="https://wa.me/5493537665026?text=Hola%20Box%20%26%20Co%20%F0%9F%91%8B%20Me%20interesa%20la%20Box%20Vino%20%2B%20Copa%20%2B%20Sales%20x2%20para%20fin%20de%20a%C3%B1o" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+      <div class="box-card">
+        <div class="box-img"><img src="img/cajas/box-vino-sacacorcho-auto.jpg" alt="Box Vino + Sacacorcho Automático" loading="lazy"></div>
+        <div class="box-body">
+          <div class="box-name">Box Vino + Sacacorcho Automático</div>
+          <div class="box-desc">Práctica y moderna: vino Malbec con sacacorcho automático. Un clásico que nunca falla.</div>
+          <a class="box-wa" href="https://wa.me/5493537665026?text=Hola%20Box%20%26%20Co%20%F0%9F%91%8B%20Me%20interesa%20la%20Box%20Vino%20%2B%20Sacacorcho%20Autom%C3%A1tico%20para%20fin%20de%20a%C3%B1o" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+      <div class="box-card">
+        <div class="box-img"><img src="img/cajas/box-vino-copa.jpg" alt="Box Vino + Copa" loading="lazy"></div>
+        <div class="box-body">
+          <div class="box-name">Box Vino + Copa</div>
+          <div class="box-desc">Clásica y sofisticada: vino Malbec con copa sin pie. Para clientes especiales.</div>
+          <a class="box-wa" href="https://wa.me/5493537665026?text=Hola%20Box%20%26%20Co%20%F0%9F%91%8B%20Me%20interesa%20la%20Box%20Vino%20%2B%20Copa%20para%20fin%20de%20a%C3%B1o" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Kits / ideas -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Más ideas</div>
+      <h2 class="section-title">Otras opciones para fin de año</h2>
+      <p class="section-subtitle">Además de las cajas, armamos kits y sets personalizados con el catálogo completo de Box & Co.</p>
+    </div>
+    <div class="kits-grid">
+      <div class="kit-card">
+        <div class="kit-icon">
+          <svg viewBox="0 0 24 24"><path d="M7 22h10l1-12H6l1 12zM8 6h8v2H8V6zm2-3h4l1 3H9l1-3z"/></svg>
+        </div>
+        <h3>Kits de Mates</h3>
+        <p>Termos, mates y materas con el logo de tu marca. El regalo ideal para el equipo.</p>
+      </div>
+      <div class="kit-card">
+        <div class="kit-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Drinkware y Termos</h3>
+        <p>Botellas, jarros y termos de las mejores marcas, personalizados con grabado o serigrafía.</p>
+      </div>
+      <div class="kit-card">
+        <div class="kit-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8L12 2z"/></svg>
+        </div>
+        <h3>Canastas y combos</h3>
+        <p>Armamos el combo a medida según tu presupuesto y la cantidad de regalos que necesites.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cómo funciona -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Proceso simple</div>
+      <h2 class="section-title">Así de fácil lo hacemos</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Contanos tu idea</h3>
+        <p>Escribinos por WhatsApp: cuántas unidades, para quién y tu presupuesto.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Armamos la propuesta</h3>
+        <p>Te pasamos opciones de productos, personalización y precios por cantidad.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Producimos con tu logo</h3>
+        <p>Aprobás el diseño y arrancamos la producción con las mejores técnicas.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Entregamos</h3>
+        <p>Envíos a Córdoba, Santa Fe y todo el país, listos antes de las fiestas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Banner CTA -->
+<section class="banner-section">
+  <div class="container">
+    <h2 class="banner-title">¿Cuántos regalos necesitás?</h2>
+    <p class="banner-text">Manejamos pedidos de 10 a miles de unidades. Contanos tu proyecto y te cotizamos en el día.</p>
+    <a href="https://wa.me/5493537665026?text=Hola%20Box%20%26%20Co%20%F0%9F%91%8B%20Quiero%20armar%20los%20regalos%20de%20fin%20de%20a%C3%B1o%20para%20mi%20empresa" target="_blank" class="btn-gold">Cotizar mi pedido →</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">Preguntas frecuentes de fin de año</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          ¿Hasta cuándo puedo hacer el pedido para las fiestas?
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><p>Cuanto antes, mejor: la producción con logo y los envíos llevan tiempo. Escribinos ya y coordinamos las fechas para que tu pedido llegue antes de Navidad y Año Nuevo.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          ¿Hacen pedidos grandes?
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><p>Sí. Manejamos desde pedidos chicos hasta miles de unidades para empresas grandes. Consultá descuentos por cantidad <a href="https://wa.me/5493537665026" target="_blank">por WhatsApp</a>.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          ¿Dónde hacen envíos?
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><p>Enviamos a todo el país, con mucha operación en Córdoba y Santa Fe. Coordinamos la logística según la cantidad y el destino.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          ¿Cómo se personaliza con el logo?
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><p>Nos enviás el logo de tu empresa y elegimos la técnica ideal: serigrafía, bordado, grabado láser, tampografía, entre otras. Te mostramos el diseño antes de producir.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          ¿Puedo ver el catálogo completo?
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><p>¡Claro! En <a href="/#productos">boxyco.com.ar</a> tenés más de 640 productos personalizables con precios, y podés armar tu presupuesto directo desde el carrito.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:8px;">
+          <img src="img/logo-circular.jpg" alt="Box & Co" width="42" height="42" style="border-radius:50%;object-fit:cover;">
+          <div>
+            <div class="logo-text">BOX <span>&</span> CO</div>
+          </div>
+        </div>
+        <p>Regalos empresariales y merchandising corporativo personalizado. Detalles que crean vínculos, todo el año — y en fin de año, todavía más.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div>boxycoregalos@gmail.com</div>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <div>+549 3537 665026</div>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+          <div>@boxyco.re</div>
+        </div>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <div class="footer-links">
+          <a href="/">Sitio principal</a>
+          <a href="/#productos">Catálogo completo</a>
+          <a href="https://wa.me/5493537665026" target="_blank">WhatsApp</a>
+          <a href="https://www.instagram.com/boxyco.re/" target="_blank">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>BOX & CO © 2026. Todos los derechos reservados.</div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/boxyco.re/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5493537665026" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</a>
+
+</body>
+</html>
