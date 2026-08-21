@@ -90,7 +90,7 @@ ul { list-style: none; }
 .feature-desc { font-size: 14px; color: var(--text-light); line-height: 1.5; }
 
 /* Section */
-.section { padding: 56px 0; }
+.section { padding: 56px 0; scroll-margin-top: 76px; }
 .section-alt { background: var(--white); }
 .section-header { text-align: center; margin-bottom: 36px; }
 .section-tag { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 6px; }
@@ -399,12 +399,13 @@ ul { list-style: none; }
   </div>
 </header>
 
-<!-- Banner fin de año -->
-<div style="background: linear-gradient(90deg, var(--gold-light) 0%, var(--cream) 50%, var(--gold-light) 100%); border-bottom:1px solid var(--gray-200); text-align:center; padding:10px 16px;">
+<!-- Banner fin de año + categorías -->
+<div style="background: linear-gradient(90deg, var(--gold-light) 0%, var(--cream) 50%, var(--gold-light) 100%); border-bottom:1px solid var(--gray-200); text-align:center; padding:10px 16px 14px;">
   <a href="/fin-de-ano.html" style="display:inline-flex; align-items:center; gap:8px; color:var(--bordo); font-size:14px; font-weight:600;">
     <span style="font-size:16px;">🎁</span> Temporada Fin de Año: cajas y kits corporativos con tu logo
     <span style="background:var(--bordo); color:var(--gold); padding:3px 12px; border-radius:50px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Ver más →</span>
   </a>
+  <div class="products-tabs" id="productsTabs" style="margin:12px auto 0; max-width:100%; justify-content:center; background:rgba(255,255,255,0.85);"></div>
 </div>
 
 <!-- Hero -->
@@ -550,7 +551,6 @@ ul { list-style: none; }
         <p style="font-size:14px;color:var(--text-light);margin-top:4px;">637 productos listos para personalizar</p>
         <p style="font-size:13px;color:var(--bordo);font-weight:600;margin-top:8px;">💬 Consultá descuentos por cantidad <a href="https://wa.me/5493537665026" target="_blank" style="text-decoration:underline;">por WhatsApp</a></p>
       </div>
-      <div class="products-tabs" id="productsTabs"></div>
     </div>
     <div class="products-grid" id="productGrid"></div>
   </div>
@@ -806,6 +806,8 @@ function buildTabs() {
       currentFilter = c;
       shownCount = 60;
       renderProducts(getFiltered());
+      const grid = document.getElementById('productos');
+      if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     wrap.appendChild(b);
   });
