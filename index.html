@@ -114,6 +114,14 @@ ul { list-style: none; }
 .banner-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--bordo-dark); padding: 12px 32px; border-radius: 50px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s; border: none; cursor: pointer; font-family: var(--font); }
 .banner-btn:hover { background: #c49640; }
 
+/* Banner Día de la Madre */
+.dia-madre-banner { display: block; margin: 40px auto 0; max-width: 1080px; background: linear-gradient(90deg, rgba(190,90,115,0.55) 0%, rgba(190,90,115,0.18) 45%, rgba(190,90,115,0) 62%), url('img/banner-dia-madre.jpg') center/cover no-repeat; border-radius: 16px; padding: 46px 40px; text-align: left; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; color: white; position: relative; overflow: hidden; }
+.dia-madre-banner:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.dia-madre-banner .dm-emoji { font-size: 30px; line-height: 1; text-shadow: 0 1px 6px rgba(120,40,60,0.35); }
+.dia-madre-banner h3 { font-size: clamp(26px, 3.2vw, 38px); font-weight: 700; color: white; margin: 10px 0 8px; text-shadow: 0 2px 10px rgba(120,40,60,0.4); }
+.dia-madre-banner p { font-size: 15px; color: rgba(255,255,255,0.95); max-width: 460px; margin: 0 0 22px; text-shadow: 0 1px 8px rgba(120,40,60,0.45); }
+.dia-madre-banner .dm-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--bordo-dark); padding: 12px 32px; border-radius: 50px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 2px 10px rgba(120,40,60,0.3); }
+
 /* Products Grid */
 .products-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
 .products-tabs { display: flex; flex-wrap: wrap; gap: 4px; background: var(--gray-100); border-radius: 8px; padding: 3px; max-width: 720px; }
@@ -420,6 +428,14 @@ ul { list-style: none; }
   </div>
 </section>
 
+<!-- Banner Día de la Madre -->
+<a class="dia-madre-banner" onclick="goDiaMadre()" role="button" tabindex="0" aria-label="Ver productos del Día de la Madre">
+  <div class="dm-emoji">🌷</div>
+  <h3>Día de la Madre</h3>
+  <p>Productos pensados para regalarle a mamá, personalizados con el logo de tu marca.</p>
+  <span class="dm-btn">Ver productos →</span>
+</a>
+
 <!-- Features -->
 <section class="features">
   <div class="container">
@@ -548,7 +564,7 @@ ul { list-style: none; }
       <div>
         <div class="section-tag" style="text-align:left;">Catálogo</div>
         <h2 class="section-title" style="margin-bottom:0;">Nuestros productos</h2>
-        <p style="font-size:14px;color:var(--text-light);margin-top:4px;">637 productos listos para personalizar</p>
+        <p style="font-size:14px;color:var(--text-light);margin-top:4px;">636 productos listos para personalizar</p>
         <p style="font-size:13px;color:var(--bordo);font-weight:600;margin-top:8px;">💬 Consultá descuentos por cantidad <a href="https://wa.me/5493537665026" target="_blank" style="text-decoration:underline;">por WhatsApp</a></p>
       </div>
     </div>
@@ -781,6 +797,7 @@ ul { list-style: none; }
 <script src="products.js"></script>
 <script src="globalross.js"></script>
 <script src="cajas.js"></script>
+<script src="dia-madre.js"></script>
 <script>
 // Fusión de catálogos: productos Zecat (products.js) + Global Ross (globalross.js) + Cajas personalizadas (cajas.js)
 PRODUCTS.push(...GR_PRODUCTS, ...CAJAS_PRODUCTS);
@@ -793,7 +810,9 @@ function fmtPrice(n) { return '$' + n.toLocaleString('es-AR'); }
 
 // Generar tabs de categorías automáticamente desde los datos
 function buildTabs() {
-  const cats = ['Todos'].concat([...new Set(PRODUCTS.map(p => p.cat))]);
+  const cats = ['Todos'];
+  if (typeof DIA_MADRE_IDS !== 'undefined') cats.push('Día de la Madre');
+  cats.push(...[...new Set(PRODUCTS.map(p => p.cat))]);
   const wrap = document.querySelector('.products-tabs');
   wrap.innerHTML = '';
   cats.forEach((c, i) => {
@@ -1067,7 +1086,23 @@ function sendCartWhatsApp() {
 
 function getFiltered() {
   if (currentFilter === 'Todos') return PRODUCTS;
+  if (currentFilter === 'Día de la Madre') {
+    return PRODUCTS.filter(p => DIA_MADRE_IDS.includes(String(p.id)));
+  }
   return PRODUCTS.filter(p => p.cat === currentFilter);
+}
+
+// Banner Día de la Madre: activa el tab y muestra la selección de la campaña
+function goDiaMadre() {
+  const tabs = document.querySelectorAll('.products-tab');
+  tabs.forEach(t => t.classList.remove('active'));
+  const tab = [...tabs].find(t => t.textContent === 'Día de la Madre');
+  if (tab) tab.classList.add('active');
+  currentFilter = 'Día de la Madre';
+  shownCount = 60;
+  renderProducts(getFiltered());
+  const grid = document.getElementById('productos');
+  if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 buildTabs();
