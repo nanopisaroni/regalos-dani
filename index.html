@@ -1107,6 +1107,12 @@ function goDiaMadre() {
 
 buildTabs();
 renderProducts(PRODUCTS);
+
+// Deep-link de campaña: boxyco.com.ar/#madre abre el catálogo ya filtrado con la selección
+// del Día de la Madre (para el link en bio de Instagram). No afecta a quien entra sin hash.
+if (location.hash === '#madre' || location.hash === '#dia-de-la-madre') {
+  setTimeout(function () { goDiaMadre(); }, 120);
+}
 </script>
 </body>
 </html>
