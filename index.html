@@ -127,6 +127,18 @@ ul { list-style: none; }
 .products-tabs { display: flex; flex-wrap: wrap; gap: 4px; background: var(--gray-100); border-radius: 8px; padding: 3px; max-width: 720px; }
 .products-tab { padding: 7px 16px; border-radius: 6px; font-size: 12px; font-weight: 500; border: none; background: transparent; cursor: pointer; color: var(--text-light); transition: all 0.2s; font-family: var(--font); }
 .products-tab.active { background: white; color: var(--bordo); box-shadow: var(--shadow-sm); }
+
+/* Buscador de productos */
+.search-wrap { position: relative; display: flex; align-items: center; max-width: 520px; margin: 0 auto; }
+.search-wrap .search-ico { position: absolute; left: 15px; width: 17px; height: 17px; fill: none; stroke: var(--bordo); stroke-width: 2; stroke-linecap: round; pointer-events: none; opacity: 0.7; }
+.search-input { width: 100%; padding: 11px 42px 11px 43px; border: 1.5px solid var(--gray-200); border-radius: 50px; font-family: var(--font); font-size: 14px; color: var(--text); background: var(--white); box-shadow: var(--shadow-sm); outline: none; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; appearance: none; }
+.search-input::placeholder { color: var(--text-light); }
+.search-input:focus { border-color: var(--bordo); box-shadow: 0 0 0 3px rgba(110, 20, 35, 0.08); }
+.search-input::-webkit-search-cancel-button { display: none; }
+.search-clear { position: absolute; right: 9px; width: 26px; height: 26px; border: none; border-radius: 50%; background: var(--gray-100); color: var(--bordo); font-size: 17px; line-height: 1; cursor: pointer; display: none; align-items: center; justify-content: center; font-family: var(--font); }
+.search-clear.visible { display: flex; }
+.search-status { display: none; margin: 0 0 16px; font-size: 14px; color: var(--text-light); }
+.search-status strong { color: var(--bordo); }
 .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .product-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
 .product-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
@@ -317,6 +329,9 @@ ul { list-style: none; }
   .about-values { grid-template-columns: 1fr; }
   .categories-grid { gap: 10px; }
   .products-grid { gap: 10px; }
+  /* fix: con min-height:240px y aspect-ratio:1 las tarjetas de categoría se
+     estiraban a 240px de ancho en celular y desbordaban la pantalla (50px) */
+  .category-card { min-height: 0; }
   .products-header { flex-direction: column; align-items: flex-start; }
   .hero { min-height: 300px; }
   .hero-content { padding: 36px 0; }
@@ -413,7 +428,12 @@ ul { list-style: none; }
     <span style="font-size:16px;">🎁</span> Temporada Fin de Año: cajas y kits corporativos con tu logo
     <span style="background:var(--bordo); color:var(--gold); padding:3px 12px; border-radius:50px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Ver más →</span>
   </a>
-  <div class="products-tabs" id="productsTabs" style="margin:12px auto 0; max-width:100%; justify-content:center; background:rgba(255,255,255,0.85);"></div>
+  <div class="search-wrap" style="margin:14px auto 0;">
+    <svg class="search-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+    <input id="searchInput" class="search-input" type="search" placeholder="Buscar productos: mochila, termo, bolígrafo…" autocomplete="off" aria-label="Buscar productos" oninput="onSearch(this.value)">
+    <button type="button" id="searchClear" class="search-clear" aria-label="Limpiar búsqueda" onclick="clearSearch()">×</button>
+  </div>
+  <div class="products-tabs" id="productsTabs" style="margin:14px auto 0; max-width:100%; justify-content:center; background:rgba(255,255,255,0.85);"></div>
 </div>
 
 <!-- Hero -->
@@ -568,6 +588,7 @@ ul { list-style: none; }
         <p style="font-size:13px;color:var(--bordo);font-weight:600;margin-top:8px;">💬 Consultá descuentos por cantidad <a href="https://wa.me/5493537665026" target="_blank" style="text-decoration:underline;">por WhatsApp</a></p>
       </div>
     </div>
+    <p class="search-status" id="searchStatus"></p>
     <div class="products-grid" id="productGrid"></div>
   </div>
 </section>
@@ -803,10 +824,55 @@ ul { list-style: none; }
 PRODUCTS.push(...GR_PRODUCTS, ...CAJAS_PRODUCTS);
 let currentFilter = 'Todos';
 let shownCount = 60;
+let searchTerm = ''; // búsqueda activa normalizada (ignora el tab mientras haya texto)
+let searchRaw = '';  // texto tal cual lo escribió el usuario (para mostrar)
 const cart = {}; // name -> { p, qty }
 
 function parsePrice(s) { return parseInt(String(s).replace(/[^0-9]/g, ''), 10) || 0; }
 function fmtPrice(n) { return '$' + n.toLocaleString('es-AR'); }
+
+/* ===== Buscador =====
+   Busca en TODO el catálogo (nombre + categoría), sin acentos ni mayúsculas.
+   Mientras hay texto, el tab de categoría queda en pausa. */
+function norm(s) {
+  return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+function onSearch(value) {
+  const prev = searchTerm;
+  searchRaw = String(value).trim();
+  searchTerm = norm(value).trim();
+  const btn = document.getElementById('searchClear');
+  if (btn) btn.classList.toggle('visible', searchTerm.length > 0);
+  shownCount = 60;
+  renderProducts(getFiltered());
+  if (searchTerm && !prev) {
+    const grid = document.getElementById('productos');
+    if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+function clearSearch() {
+  searchTerm = '';
+  searchRaw = '';
+  const si = document.getElementById('searchInput');
+  if (si) { si.value = ''; si.focus(); }
+  const btn = document.getElementById('searchClear');
+  if (btn) btn.classList.remove('visible');
+  shownCount = 60;
+  renderProducts(getFiltered());
+}
+function updateSearchStatus(total) {
+  const el = document.getElementById('searchStatus');
+  if (!el) return;
+  if (!searchTerm) { el.style.display = 'none'; el.innerHTML = ''; return; }
+  const q = esc(searchRaw);
+  el.style.display = 'block';
+  el.innerHTML = total === 0
+    ? `No encontramos productos para <strong>“${q}”</strong>. Probá con otra palabra o <a href="https://wa.me/5493537665026" target="_blank" style="color:var(--bordo);text-decoration:underline;">pedínoslo por WhatsApp</a>.`
+    : `<strong>${total}</strong> ${total === 1 ? 'producto' : 'productos'} para <strong>“${q}”</strong>`;
+}
 
 /* ===== Orden del catálogo =====
    Los "más vendidos" van primero (DESTACADOS, ids en orden de prioridad),
@@ -841,6 +907,7 @@ function buildTabs() {
       document.querySelectorAll('.products-tab').forEach(t => t.classList.remove('active'));
       b.classList.add('active');
       currentFilter = c;
+      resetSearchUI();
       shownCount = 60;
       renderProducts(getFiltered());
       const grid = document.getElementById('productos');
@@ -853,8 +920,9 @@ function buildTabs() {
 function renderProducts(list) {
   const grid = document.getElementById('productGrid');
   grid.innerHTML = '';
-  const isAll = currentFilter === 'Todos';
-  const limited = isAll ? list.slice(0, shownCount) : list;
+  const paginate = currentFilter === 'Todos' || searchTerm.length > 0;
+  const limited = paginate ? list.slice(0, shownCount) : list;
+  updateSearchStatus(list.length);
   limited.forEach(p => {
     const badge = p.tags.length ? `<span class="product-badge">${p.tags[0]}</span>` : '';
     const hasPrice = p.price && p.price > 0;
@@ -894,7 +962,7 @@ function renderProducts(list) {
       </div>`;
     grid.appendChild(card);
   });
-  if (isAll && list.length > shownCount) {
+  if (paginate && list.length > shownCount) {
     const wrap = document.createElement('div');
     wrap.style.cssText = 'grid-column:1/-1;text-align:center;padding-top:8px;';
     wrap.innerHTML = `<button class="banner-btn" style="border:none;" onclick="showMore()">Ver más productos (${list.length - shownCount} restantes) ↓</button>`;
@@ -1103,11 +1171,27 @@ function sendCartWhatsApp() {
 }
 
 function getFiltered() {
+  // Con búsqueda activa se ignora el tab: se busca en TODO el catálogo.
+  if (searchTerm) {
+    return sortCatalog(PRODUCTS.filter(p =>
+      norm(p.name).includes(searchTerm) || norm(p.cat).includes(searchTerm)));
+  }
   if (currentFilter === 'Todos') return sortCatalog(PRODUCTS);
   if (currentFilter === 'Día de la Madre') {
     return sortCatalog(PRODUCTS.filter(p => DIA_MADRE_IDS.includes(String(p.id))));
   }
   return sortCatalog(PRODUCTS.filter(p => p.cat === currentFilter));
+}
+
+// Resetear la búsqueda al elegir un tab o al entrar por el deep-link de campaña.
+function resetSearchUI() {
+  if (!searchTerm) return;
+  searchTerm = '';
+  searchRaw = '';
+  const si = document.getElementById('searchInput');
+  if (si) si.value = '';
+  const btn = document.getElementById('searchClear');
+  if (btn) btn.classList.remove('visible');
 }
 
 // Banner Día de la Madre: activa el tab y muestra la selección de la campaña
@@ -1117,6 +1201,7 @@ function goDiaMadre() {
   const tab = [...tabs].find(t => t.textContent === 'Día de la Madre');
   if (tab) tab.classList.add('active');
   currentFilter = 'Día de la Madre';
+  resetSearchUI();
   shownCount = 60;
   renderProducts(getFiltered());
   const grid = document.getElementById('productos');
