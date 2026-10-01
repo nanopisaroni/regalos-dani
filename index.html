@@ -808,6 +808,24 @@ const cart = {}; // name -> { p, qty }
 function parsePrice(s) { return parseInt(String(s).replace(/[^0-9]/g, ''), 10) || 0; }
 function fmtPrice(n) { return '$' + n.toLocaleString('es-AR'); }
 
+/* ===== Orden del catálogo =====
+   Los "más vendidos" van primero (DESTACADOS, ids en orden de prioridad),
+   después el resto de menor a mayor precio. Los artículos sin precio
+   (Box - Cajas Personalizadas) van al final. */
+const DESTACADOS = []; // ← completar con los ids más vendidos
+function sortCatalog(list) {
+  const rank = new Map(DESTACADOS.map((id, i) => [String(id), i]));
+  return [...list].sort((a, b) => {
+    const ra = rank.has(String(a.id)) ? rank.get(String(a.id)) : Infinity;
+    const rb = rank.has(String(b.id)) ? rank.get(String(b.id)) : Infinity;
+    if (ra !== rb) return ra - rb;
+    const pa = (a.price && a.price > 0) ? a.price : Infinity;
+    const pb = (b.price && b.price > 0) ? b.price : Infinity;
+    if (pa !== pb) return pa - pb;
+    return String(a.name).localeCompare(String(b.name), 'es');
+  });
+}
+
 // Generar tabs de categorías automáticamente desde los datos
 function buildTabs() {
   const cats = ['Todos'];
@@ -1085,11 +1103,11 @@ function sendCartWhatsApp() {
 }
 
 function getFiltered() {
-  if (currentFilter === 'Todos') return PRODUCTS;
+  if (currentFilter === 'Todos') return sortCatalog(PRODUCTS);
   if (currentFilter === 'Día de la Madre') {
-    return PRODUCTS.filter(p => DIA_MADRE_IDS.includes(String(p.id)));
+    return sortCatalog(PRODUCTS.filter(p => DIA_MADRE_IDS.includes(String(p.id))));
   }
-  return PRODUCTS.filter(p => p.cat === currentFilter);
+  return sortCatalog(PRODUCTS.filter(p => p.cat === currentFilter));
 }
 
 // Banner Día de la Madre: activa el tab y muestra la selección de la campaña
