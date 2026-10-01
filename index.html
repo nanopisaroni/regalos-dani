@@ -609,7 +609,7 @@ ul { list-style: none; }
       <div>
         <div class="section-tag" style="text-align:left;">Catálogo</div>
         <h2 class="section-title" style="margin-bottom:0;">Nuestros productos</h2>
-        <p style="font-size:14px;color:var(--text-light);margin-top:4px;">718 productos listos para personalizar</p>
+        <p style="font-size:14px;color:var(--text-light);margin-top:4px;">717 productos listos para personalizar</p>
         <p style="font-size:13px;color:var(--bordo);font-weight:600;margin-top:8px;">💬 Consultá descuentos por cantidad <a href="https://wa.me/5493537665026" target="_blank" style="text-decoration:underline;">por WhatsApp</a></p>
       </div>
     </div>
@@ -845,7 +845,6 @@ ul { list-style: none; }
 <script src="globalross.js"></script>
 <script src="cajas.js"></script>
 <script src="dia-madre.js"></script>
-<script src="variants.js"></script>
 <script>
 // Fusión de catálogos: productos Zecat (products.js) + Global Ross (globalross.js) + Cajas personalizadas (cajas.js)
 PRODUCTS.push(...GR_PRODUCTS, ...CAJAS_PRODUCTS);
@@ -1343,13 +1342,22 @@ function goDiaMadre() {
 }
 
 buildTabs();
-renderProducts(PRODUCTS);
+renderProducts(getFiltered());
 
 // Deep-link de campaña: boxyco.com.ar/#madre abre el catálogo ya filtrado con la selección
 // del Día de la Madre (para el link en bio de Instagram). No afecta a quien entra sin hash.
 if (location.hash === '#madre' || location.hash === '#dia-de-la-madre') {
   setTimeout(function () { goDiaMadre(); }, 120);
 }
+
+/* El stock (~426 KB) es lo más pesado de la página: se baja DESPUÉS del primer render y,
+   cuando llega, se repinta la grilla. Así el catálogo abre rápido y el stock aparece al toque. */
+(function loadStock() {
+  const s = document.createElement('script');
+  s.src = 'variants.js';
+  s.onload = function () { try { renderProducts(getFiltered()); } catch (e) { } };
+  document.body.appendChild(s);
+})();
 </script>
 </body>
 </html>
