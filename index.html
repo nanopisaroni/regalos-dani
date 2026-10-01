@@ -139,6 +139,29 @@ ul { list-style: none; }
 .search-clear.visible { display: flex; }
 .search-status { display: none; margin: 0 0 16px; font-size: 14px; color: var(--text-light); }
 .search-status strong { color: var(--bordo); }
+
+/* Stock (rangos) y variantes */
+.product-stock { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; margin-top: 7px; }
+.product-stock .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.product-stock.ok { color: #1B7A46; }
+.product-stock.ult { color: #B07A0E; }
+.product-stock.no { color: #9A2A2A; }
+.product-stock .arr { color: var(--text-light); font-weight: 500; }
+.pm-variants { margin: 14px 0 4px; }
+.pm-variants-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13px; font-weight: 700; color: var(--bordo); margin-bottom: 9px; }
+.pm-variants-title .range { font-size: 12px; font-weight: 600; }
+.pm-var-opts { display: flex; flex-wrap: wrap; gap: 6px; max-height: 190px; overflow-y: auto; padding-right: 2px; }
+.pm-var-opt { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border: 1.5px solid var(--gray-200); border-radius: 50px; background: var(--white); font-family: var(--font); font-size: 12.5px; color: var(--text); cursor: pointer; transition: border-color 0.15s, background 0.15s, color 0.15s; }
+.pm-var-opt:hover { border-color: var(--bordo); }
+.pm-var-opt.active { border-color: var(--bordo); background: var(--bordo); color: var(--white); }
+.pm-var-opt.active .swatch { box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6); }
+.pm-var-opt.agotado { opacity: 0.5; }
+.pm-var-opt .swatch { width: 11px; height: 11px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.18); flex-shrink: 0; }
+.pm-var-opt .st { font-size: 11px; font-weight: 600; opacity: 0.85; }
+.pm-var-opt.agotado .st { color: #9A2A2A; }
+.pm-var-opt:not(.active).agotado .st { color: #9A2A2A; }
+.pm-arrivals { display: flex; align-items: center; gap: 7px; margin-top: 10px; padding: 9px 12px; background: var(--gold-light); border-radius: var(--radius-sm); font-size: 12.5px; color: var(--bordo); font-weight: 600; }
+.pm-arrivals svg { width: 15px; height: 15px; fill: none; stroke: var(--bordo); stroke-width: 2; flex-shrink: 0; }
 .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .product-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
 .product-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
@@ -789,6 +812,7 @@ ul { list-style: none; }
         <div class="pm-price-row">
           <div class="pm-price" id="pmPrice"></div>
         </div>
+        <div class="pm-variants" id="pmVariants"></div>
         <div class="pm-discount-hint">Consultá descuentos por cantidad para pedidos mayores</div>
         <div class="pm-buy">
           <div class="pm-qty">
@@ -819,6 +843,7 @@ ul { list-style: none; }
 <script src="globalross.js"></script>
 <script src="cajas.js"></script>
 <script src="dia-madre.js"></script>
+<script src="variants.js"></script>
 <script>
 // Fusión de catálogos: productos Zecat (products.js) + Global Ross (globalross.js) + Cajas personalizadas (cajas.js)
 PRODUCTS.push(...GR_PRODUCTS, ...CAJAS_PRODUCTS);
@@ -872,6 +897,45 @@ function updateSearchStatus(total) {
   el.innerHTML = total === 0
     ? `No encontramos productos para <strong>“${q}”</strong>. Probá con otra palabra o <a href="https://wa.me/5493537665026" target="_blank" style="color:var(--bordo);text-decoration:underline;">pedínoslo por WhatsApp</a>.`
     : `<strong>${total}</strong> ${total === 1 ? 'producto' : 'productos'} para <strong>“${q}”</strong>`;
+}
+
+/* ===== Stock y variantes (Zecat) =====
+   Dani 30/09/2026: mostrar RANGOS (nunca el número exacto, para no exponer el stock)
+   y, si está sin stock con arribos programados, mostrar cuándo llega. */
+const STOCK_LOW = 100; // menos de esto = "Últimas unidades"
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+
+function varData(p) {
+  return (typeof VARIANTS !== 'undefined' && VARIANTS[String(p.id)]) ? VARIANTS[String(p.id)] : null;
+}
+function variantsOf(p) { const d = varData(p); return (d && d.v) ? d.v : []; }
+function arrivalsOf(p) { const d = varData(p); return (d && d.arr) ? d.arr.filter(a => a.s > 0) : []; }
+function stockTotal(p) {
+  const v = variantsOf(p);
+  return v.length ? v.reduce((a, x) => a + Math.max(0, x.s), 0) : null;
+}
+function stockRange(n) {
+  if (n === null || n === undefined) return null;
+  if (n <= 0) return { cls: 'no', txt: 'Sin stock' };
+  if (n < STOCK_LOW) return { cls: 'ult', txt: 'Últimas unidades' };
+  return { cls: 'ok', txt: 'Disponible' };
+}
+function fmtFecha(iso) {
+  const p = String(iso).split('-');
+  if (p.length < 3) return String(iso);
+  return parseInt(p[2], 10) + ' de ' + (MESES[parseInt(p[1], 10) - 1] || '');
+}
+function arrivalsTxt(p, max) {
+  const a = arrivalsOf(p);
+  if (!a.length) return '';
+  return 'Llega ' + a.slice(0, max || 2).map(x => `${fmtFecha(x.d)} (${x.s} u.)`).join(' · ');
+}
+function stockHtml(p) {
+  const n = stockTotal(p);
+  if (n === null) return '';
+  const r = stockRange(n);
+  const arr = n <= 0 ? arrivalsTxt(p, 1) : '';
+  return `<div class="product-stock ${r.cls}"><span class="dot"></span><span>${r.txt}</span>${arr ? `<span class="arr">· ${arr}</span>` : ''}</div>`;
 }
 
 /* ===== Orden del catálogo =====
@@ -956,6 +1020,7 @@ function renderProducts(list) {
         <div class="product-cats"><span class="product-cat">${p.cat.toUpperCase()}</span></div>
         <div class="product-name">${p.name}</div>
         ${priceHtml}
+        ${stockHtml(p)}
         <div class="product-add-wrap" id="add-${p.name.replace(/[^a-zA-Z0-9]/g, '')}">
           ${actionHtml}
         </div>
@@ -978,6 +1043,59 @@ function showMore() {
 /* ===== Product Modal ===== */
 let pmProduct = null;
 let pmQty = 1;
+let pmVariants = [];
+let pmVariantIdx = -1;
+
+function variantLabel(v) { return (v.t || []).map(x => x[1]).join(' · '); }
+
+/* Selector de variantes con el stock de cada una (rangos, nunca el número exacto).
+   Con UNA sola variante no hay nada que elegir: se muestra solo el aviso de arribo. */
+function renderPmVariants(p) {
+  const box = document.getElementById('pmVariants');
+  pmVariants = variantsOf(p);
+  pmVariantIdx = -1;
+  if (!pmVariants.length) { box.innerHTML = ''; box.style.display = 'none'; return; }
+  box.style.display = '';
+  const first = pmVariants.findIndex(v => v.s > 0);
+  pmVariantIdx = first >= 0 ? first : 0;
+
+  const chips = pmVariants.map((v, i) => {
+    const r = stockRange(Math.max(0, v.s));
+    const agotado = Math.max(0, v.s) <= 0;
+    const sw = v.c ? `<span class="swatch" style="background:${v.c};"></span>` : '';
+    return `<button type="button" class="pm-var-opt${i === pmVariantIdx ? ' active' : ''}${agotado ? ' agotado' : ''}" onclick="pmSelectVariant(${i})">${sw}<span>${esc(variantLabel(v))}</span><span class="st">${r.txt}</span></button>`;
+  }).join('');
+
+  const cabecera = pmVariants.length > 1
+    ? `<div class="pm-variants-title"><span>Elegí la variante (${pmVariants.length})</span></div><div class="pm-var-opts">${chips}</div>`
+    : '';
+  box.innerHTML = cabecera + '<div id="pmArrivals"></div>';
+  updatePmVarInfo();
+}
+
+function pmSelectVariant(i) {
+  if (i < 0 || i >= pmVariants.length) return;
+  pmVariantIdx = i;
+  document.querySelectorAll('.pm-var-opt').forEach((b, k) => b.classList.toggle('active', k === i));
+  const v = pmVariants[i];
+  if (v.img) {
+    document.getElementById('pmMainImg').src = v.img;
+    document.querySelectorAll('.pm-thumb').forEach(t => t.classList.remove('active'));
+  }
+  updatePmVarInfo();
+}
+
+function updatePmVarInfo() {
+  const el = document.getElementById('pmArrivals');
+  if (!el) return;
+  const total = pmVariants.reduce((a, x) => a + Math.max(0, x.s), 0);
+  let html = '';
+  if (total <= 0 && pmProduct) {
+    const arr = arrivalsTxt(pmProduct, 3);
+    if (arr) html = `<div class="pm-arrivals"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg><span>Sin stock — ${arr}</span></div>`;
+  }
+  el.innerHTML = html;
+}
 
 function openProductModal(id) {
   pmProduct = PRODUCTS.find(p => p.id === id);
@@ -1018,6 +1136,9 @@ function openProductModal(id) {
   if (p.tech && p.tech.length) metas.push(`<div class="pm-meta-item"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg><span>Técnicas: ${p.tech.join(', ')}</span></div>`);
   document.getElementById('pmMeta').innerHTML = metas.join('');
 
+  // variantes + stock
+  renderPmVariants(p);
+
   // thumbnails
   const thumbs = document.getElementById('pmThumbs');
   thumbs.innerHTML = '';
@@ -1057,12 +1178,14 @@ function updatePmQty() {
 function pmAddToCart() {
   if (!pmProduct) return;
   const p = pmProduct;
-  cart[p.name] = { p, qty: (cart[p.name] ? cart[p.name].qty : 0) + pmQty };
+  const v = (pmVariants.length > 1) ? pmVariants[pmVariantIdx] : null;
+  const key = v ? p.name + ' — ' + variantLabel(v) : p.name;
+  cart[key] = { p, qty: (cart[key] ? cart[key].qty : 0) + pmQty };
   renderProducts(getFiltered());
   updateCartUI();
   closeProductModal();
   const toast = document.getElementById('cartToast');
-  toast.textContent = '✓ ' + pmQty + '× ' + p.name + ' agregado al carrito';
+  toast.textContent = '✓ ' + pmQty + '× ' + key + ' agregado al carrito';
   toast.classList.add('show');
   clearTimeout(toast._t);
   toast._t = setTimeout(() => toast.classList.remove('show'), 1800);
@@ -1074,6 +1197,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProduct
 function addToCart(name) {
   const p = PRODUCTS.find(x => x.name === name);
   if (!p) return;
+  // Con más de una variante hay que elegir cuál: abrimos el detalle en vez de agregar a ciegas.
+  if (variantsOf(p).length > 1) { openProductModal(p.id); return; }
   cart[name] = cart[name] || { p, qty: 0 };
   cart[name].qty++;
   renderProducts(getFiltered());
@@ -1164,7 +1289,7 @@ function sendCartWhatsApp() {
   const lines = names.map(name => {
     const { p, qty } = cart[name];
     const sub = parsePrice(p.price) * qty;
-    return `• ${p.name} x${qty} — ${fmtPrice(sub)}`;
+    return `• ${name} x${qty} — ${fmtPrice(sub)}`;
   }).join('\n');
   const text = `Hola Box & Co 👋 Quiero un presupuesto para:\n${lines}\n\nTotal estimado: ${fmtPrice(cartTotal())} (sin IVA ni personalización)`;
   window.open('https://wa.me/5493537665026?text=' + encodeURIComponent(text), '_blank');
