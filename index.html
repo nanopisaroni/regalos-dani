@@ -162,6 +162,8 @@ ul { list-style: none; }
 .pm-var-opt:not(.active).agotado .st { color: #9A2A2A; }
 .pm-arrivals { display: flex; align-items: center; gap: 7px; margin-top: 10px; padding: 9px 12px; background: var(--gold-light); border-radius: var(--radius-sm); font-size: 12.5px; color: var(--bordo); font-weight: 600; }
 .pm-arrivals svg { width: 15px; height: 15px; fill: none; stroke: var(--bordo); stroke-width: 2; flex-shrink: 0; }
+/* detalle de la variante elegida dentro del carrito */
+.cart-item-variant { font-size: 12px; font-weight: 600; color: var(--bordo); margin-top: 3px; }
 .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .product-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
 .product-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
@@ -1180,7 +1182,13 @@ function pmAddToCart() {
   const p = pmProduct;
   const v = (pmVariants.length > 1) ? pmVariants[pmVariantIdx] : null;
   const key = v ? p.name + ' — ' + variantLabel(v) : p.name;
-  cart[key] = { p, qty: (cart[key] ? cart[key].qty : 0) + pmQty };
+  const prev = cart[key];
+  cart[key] = {
+    p,
+    qty: (prev ? prev.qty : 0) + pmQty,
+    variant: v ? variantLabel(v) : '',
+    img: (v && v.img) ? v.img : p.img,
+  };
   renderProducts(getFiltered());
   updateCartUI();
   closeProductModal();
@@ -1260,9 +1268,10 @@ function renderCart() {
     const sub = parsePrice(p.price) * qty;
     return `
       <div class="cart-item">
-        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <img src="${cart[name].img || p.img}" alt="${p.name}" loading="lazy">
         <div class="cart-item-info">
           <div class="cart-item-name">${p.name}</div>
+          ${cart[name].variant ? `<div class="cart-item-variant">${esc(cart[name].variant)}</div>` : ''}
           <div class="cart-item-price">${fmtPrice(p.price)} <sup>+ IVA</sup> / u.</div>
           <div class="cart-item-line">
             <div class="qty-stepper">
